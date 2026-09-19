@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import { navigation } from "./navigation";
 
 interface NavLinksProps {
@@ -14,16 +15,28 @@ const NavLinks = ({ activeSection }: NavLinksProps) => {
           <a
             key={item.href}
             href={item.href}
-            className={`relative rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 ${
-              isActive
-                ? "text-primary"
-                : "text-font-muted hover:bg-purple-light hover:text-font"
-            }`}
+            className="relative rounded-lg px-3 py-2 text-sm font-medium"
           >
-            {item.label}
+            {/* Text */}
+            <span
+              className={`relative z-10 transition-colors duration-200 ${
+                isActive ? "text-primary" : "text-font-muted hover:text-font"
+              }`}
+            >
+              {item.label}
+            </span>
 
+            {/* Smooth active indicator */}
             {isActive && (
-              <span className="absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-primary" />
+              <motion.span
+                layoutId="nav-active"
+                className="absolute inset-x-2 -bottom-0.5 h-0.5 rounded-full bg-primary"
+                transition={{
+                  type: "spring",
+                  stiffness: 500,
+                  damping: 35,
+                }}
+              />
             )}
           </a>
         );

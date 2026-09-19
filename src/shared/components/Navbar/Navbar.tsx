@@ -1,19 +1,18 @@
 import { motion } from "motion/react";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { HiOutlineMenu } from "react-icons/hi";
+import { HiOutlineSlash } from "react-icons/hi2";
 
 import { FaGithub } from "react-icons/fa6";
 import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
 import NavLinks from "./NavLinks";
-import SearchButton from "./SearchButton";
 import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const [searchOpen, setSearchOpen] = useState(false);
 
   // ============================================
   // SCROLL DETECTION
@@ -54,13 +53,6 @@ const Navbar = () => {
     sections.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
-  }, []);
-
-  // ============================================
-  // SEARCH
-  // ============================================
-  const handleSearch = useCallback(() => {
-    setSearchOpen((previous) => !previous);
   }, []);
 
   return (
@@ -134,10 +126,11 @@ const Navbar = () => {
             ================================================= */}
             <div className="flex items-center gap-6">
               <Logo />
-
               {/* Divider */}
-              <div className="hidden h-5 w-px bg-border lg:block" />
-
+              <HiOutlineSlash
+                size={20}
+                className="hidden lg:block text-font-muted"
+              />
               <NavLinks activeSection={activeSection} />
             </div>
 
@@ -145,11 +138,6 @@ const Navbar = () => {
                 RIGHT
             ================================================= */}
             <div className="flex items-center gap-2">
-              {/* Search */}
-              <SearchButton onClick={handleSearch} />
-
-              {/* Theme */}
-              <ThemeToggle />
               {/* Github */}
               <a
                 href="https://github.com/VickyNarvare"
@@ -180,7 +168,8 @@ const Navbar = () => {
                 <FaGithub size={17} />
                 GitHub
               </a>
-
+              {/* Theme */}
+              <ThemeToggle />
               {/* Let's Talk */}
               <a
                 href="#contact"
@@ -234,78 +223,6 @@ const Navbar = () => {
           <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
         </motion.div>
       </header>
-
-      {/* =====================================================
-          SEARCH OVERLAY
-      ===================================================== */}
-      {searchOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="
-            fixed
-            inset-0
-            z-60
-            flex
-            items-start
-            justify-center
-            bg-black/20
-            px-4
-            pt-24
-            backdrop-blur-sm
-          "
-          onClick={() => setSearchOpen(false)}
-        >
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: -15,
-              scale: 0.97,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              scale: 1,
-            }}
-            transition={{ duration: 0.7 }}
-            className="
-              w-full
-              max-w-xl
-              rounded-2xl
-              border
-              border-border
-              bg-background-card
-              p-4
-              shadow-2xl
-            "
-            onClick={(event) => event.stopPropagation()}
-          >
-            <input
-              autoFocus
-              type="text"
-              placeholder="Search projects, skills..."
-              className="
-                h-12
-                w-full
-                rounded-xl
-                border
-                border-border
-                bg-background-secondary
-                px-4
-                text-sm
-                text-font
-                outline-none
-                transition
-                focus:border-primary
-              "
-            />
-
-            <p className="mt-3 px-1 text-xs text-font-light">
-              Press ESC or click outside to close.
-            </p>
-          </motion.div>
-        </motion.div>
-      )}
     </>
   );
 };

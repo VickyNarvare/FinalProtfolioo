@@ -38,7 +38,6 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
                 <RxCross2 size={20} />
               </button>
             </div>
-
             <div className="space-y-1">
               {navigation.map((item) => (
                 <a
@@ -51,17 +50,25 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
                 </a>
               ))}
             </div>
-
             <div className="my-3 h-px bg-border" />
-
             <a
               href="https://github.com/VickyNarvare"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-medium text-font-muted hover:bg-purple-light hover:text-font"
+              className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-medium text-font-muted hover:bg-purple-light hover:text-font mb-1"
             >
               <FaGithub size={17} />
               GitHub
+            </a>
+
+            {/* Let's Talk */}
+            <a
+              href="#contact"
+              className="
+                  flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-medium bg-primary text-white
+                "
+            >
+              Let&apos;s Talk
             </a>
           </motion.div>
         </>
