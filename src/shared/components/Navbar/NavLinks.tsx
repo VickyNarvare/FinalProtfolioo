@@ -1,5 +1,6 @@
-import { motion } from "motion/react";
-import { navigation } from "./navigation";
+import { motion } from 'motion/react';
+import { NavLink } from 'react-router';
+import { navigation } from './navigation';
 
 interface NavLinksProps {
   activeSection: string;
@@ -7,20 +8,16 @@ interface NavLinksProps {
 
 const NavLinks = ({ activeSection }: NavLinksProps) => {
   return (
-    <nav className="hidden items-center gap-1 lg:flex">
+    <nav className="hidden items-center gap-5 lg:flex">
       {navigation.map((item) => {
-        const isActive = activeSection === item.href.slice(1);
+        const isActive = activeSection === item.ref.slice(1);
 
         return (
-          <a
-            key={item.href}
-            href={item.href}
-            className="relative rounded-lg px-3 py-2 text-sm font-medium"
-          >
+          <NavLink key={item.ref} to={item.ref}>
             {/* Text */}
             <span
               className={`relative z-10 transition-colors duration-200 ${
-                isActive ? "text-primary" : "text-font-muted hover:text-font"
+                isActive ? 'text-primary' : 'text-font-muted hover:text-font'
               }`}
             >
               {item.label}
@@ -32,13 +29,13 @@ const NavLinks = ({ activeSection }: NavLinksProps) => {
                 layoutId="nav-active"
                 className="absolute inset-x-2 -bottom-0.5 h-0.5 rounded-full bg-primary"
                 transition={{
-                  type: "spring",
+                  type: 'spring',
                   stiffness: 500,
                   damping: 35,
                 }}
               />
             )}
-          </a>
+          </NavLink>
         );
       })}
     </nav>

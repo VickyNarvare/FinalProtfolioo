@@ -1,9 +1,11 @@
-import { PiCode } from "react-icons/pi";
+import { PiCode } from 'react-icons/pi';
+import { useNavigate } from 'react-router';
 const Logo = () => {
+  const navigate = useNavigate();
   return (
-    <a
-      href="#home"
-      className="group flex items-center gap-2.5"
+    <span
+      onClick={() => navigate('/')}
+      className="group flex items-center gap-2.5 cursor-pointer"
       aria-label="Vicky Narvare - Home"
     >
       <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-purple-200 bg-purple-50 transition-all duration-300 group-hover:border-purple-300 group-hover:bg-purple-100">
@@ -21,7 +23,7 @@ const Logo = () => {
 
         <p className="mt-1 text-[11px] text-font-muted">Developer</p>
       </div>
-    </a>
+    </span>
   );
 };
 

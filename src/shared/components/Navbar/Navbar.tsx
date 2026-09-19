@@ -87,40 +87,40 @@ const Navbar = () => {
           {/* =================================================
               NAVBAR CONTAINER
           ================================================= */}
-          <motion.div
-            initial={false}
-            animate={{
-              height: scrolled ? 60 : 72,
+<motion.div
+              initial={false}
+              animate={{
+                height: scrolled ? 60 : 72,
 
-              borderRadius: scrolled ? 18 : 0,
+                borderRadius: scrolled ? 18 : 0,
 
-              backgroundColor: scrolled
-                ? "rgba(255, 255, 255, 0.90)"
-                : "rgba(255, 255, 255, 0.72)",
+                backgroundColor: scrolled
+                  ? "var(--color-background-card) / 90%"
+                  : "var(--color-background-card) / 72%",
 
-              borderColor: scrolled
-                ? "rgba(233, 229, 239, 1)"
-                : "rgba(233, 229, 239, 0)",
+                borderColor: scrolled
+                  ? "var(--color-border)"
+                  : "transparent",
 
-              boxShadow: scrolled
-                ? "0 10px 35px rgba(88, 28, 135, 0.10)"
-                : "0 0 0 rgba(0, 0, 0, 0)",
-            }}
-            transition={{
-              duration: 0.7,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="
-              relative
-              flex
-              items-center
-              justify-between
-              border
-              px-4
-              sm:px-6
-              backdrop-blur-xl
-            "
-          >
+                boxShadow: scrolled
+                  ? "0 10px 35px var(--color-shadow-nav)"
+                  : "none",
+              }}
+              transition={{
+                duration: 0.7,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="
+                relative
+                flex
+                items-center
+                justify-between
+                border
+                px-4
+                sm:px-6
+                backdrop-blur-xl
+              "
+            >
             {/* =================================================
                 LEFT
             ================================================= */}

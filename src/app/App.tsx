@@ -1,11 +1,6 @@
-import { MainLayout } from "../layout/MainLayout";
+import { RouterProvider } from "react-router";
+import { router } from "../routes/routes";
 
-interface Props {}
-
-export const App = (props: Props) => {
-  return (
-    <>
-      <MainLayout />
-    </>
-  );
+export const App = () => {
+  return <RouterProvider router={router} />;
 };

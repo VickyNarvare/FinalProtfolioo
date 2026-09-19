@@ -19,7 +19,7 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-40 bg-black/10 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-40 bg-font/10 backdrop-blur-sm lg:hidden"
           />
 
           {/* Menu */}

@@ -1,11 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@font-face {
+  font-family: 'dosis';
+  src: url('../public/fonts/dosis_5.2.8_latin-500-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'poppins';
+  src: url('../public/fonts/poppins_5.2.7_devanagari-100-normal.woff2') format('woff2');
+}
 @import "tailwindcss";
 
 @theme {
   /* Font */
-  --font-poppins: "Poppins", sans-serif;
+  --font-heading: "dosis", sans-serif;
 
-  /* Colors */
+  /* Light theme colors */
   --color-font: #111111;
   --color-font-muted: #55515f;
   --color-font-light: #77727f;
@@ -25,7 +32,33 @@
   --color-purple-soft: #e9d5ff;
   --color-purple-light: #f3e8ff;
 }
+
+.dark {
+  --color-font: #faf9ff;
+  --color-font-muted: #c4b5d9;
+  --color-font-light: #a78bc9;
+
+  --color-background: #1a1625;
+  --color-background-secondary: #241e33;
+  --color-background-card: #2d273d;
+
+  --color-border: #3d3352;
+  --color-border-light: #2d273d;
+  --color-border-primary: #8f48d2;
+
+  --color-primary: #c084fc;
+  --color-primary-light: #d8b4fe;
+  --color-primary-dark: #a855f7;
+
+  --color-purple-soft: #4a3566;
+  --color-purple-light: #3d3352;
+
+  --color-shadow-nav: rgba(88, 28, 135, 0.10);
+}
+.dark {
+  --color-shadow-nav: rgba(192, 132, 252, 0.15);
+}
 * {
-  font-family: "Roboto", sans-serif;
+  font-family: "poppins", sans-serif;
   font-weight: 400;
 }
