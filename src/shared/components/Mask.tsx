@@ -3,7 +3,6 @@ import { useRef } from "react";
 import type { ReactNode } from "react";
 import { cn } from "../../lib/utils";
 
-/** Text-mask reveal. Observes the static wrapper (not the moving text) so it always triggers. */
 export const Mask = ({ children, delay = 0, className }: { children: ReactNode; delay?: number; className?: string }) => {
   const ref = useRef<HTMLSpanElement>(null);
   const seen = useInView(ref, { once: true, amount: 0.5 });
