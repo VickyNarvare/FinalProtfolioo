@@ -1,10 +1,7 @@
 export const navigation = [
-  {
-    label: "About",
-    ref: "about",
-  },
-  {
-    label: "Projects",
-    ref: "projects",
-  },
+  { label: 'About', href: '/#about' },
+  { label: 'Projects', href: '/#projects' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Skills', href: '/#skills' },
+  { label: 'Contact', href: '/#contact' },
 ];

@@ -1,64 +1,31 @@
-@font-face {
-  font-family: 'dosis';
-  src: url('../public/fonts/dosis_5.2.8_latin-500-normal.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'poppins';
-  src: url('../public/fonts/poppins_5.2.7_devanagari-100-normal.woff2') format('woff2');
-}
 @import "tailwindcss";
 
 @theme {
-  /* Font */
-  --font-heading: "dosis", sans-serif;
+  --font-heading: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  /* Light theme colors */
-  --color-font: #111111;
-  --color-font-muted: #55515f;
-  --color-font-light: #77727f;
-
-  --color-background: #faf9ff;
-  --color-background-secondary: #f5f3ff;
-  --color-background-card: #ffffff;
-
-  --color-border: #e9e5ef;
-  --color-border-light: #f0edf5;
-  --color-border-primary: #d8b4fe;
-
-  --color-primary: #8f48d2;
-  --color-primary-light: #c084fc;
-  --color-primary-dark: #9333ea;
-
-  --color-purple-soft: #e9d5ff;
-  --color-purple-light: #f3e8ff;
+  /* light (paper) */
+  --color-font: #141312; --color-font-muted: #5c574d; --color-font-light: #6f6a5e;
+  --color-background: #ece8df; --color-background-secondary: #e2ddd1; --color-background-card: #f6f3ec;
+  --color-border: #cfc9bb; --color-border-light: #ddd8cb; --color-border-primary: #3b55c9;
+  --color-primary: #3b55c9; --color-primary-light: #5f78e0; --color-primary-dark: #2d43a6;
 }
-
+/* dark (default): warm charcoal, bone text, periwinkle signal */
 .dark {
-  --color-font: #faf9ff;
-  --color-font-muted: #c4b5d9;
-  --color-font-light: #a78bc9;
-
-  --color-background: #1a1625;
-  --color-background-secondary: #241e33;
-  --color-background-card: #2d273d;
-
-  --color-border: #3d3352;
-  --color-border-light: #2d273d;
-  --color-border-primary: #8f48d2;
-
-  --color-primary: #c084fc;
-  --color-primary-light: #d8b4fe;
-  --color-primary-dark: #a855f7;
-
-  --color-purple-soft: #4a3566;
-  --color-purple-light: #3d3352;
-
-  --color-shadow-nav: rgba(88, 28, 135, 0.10);
+  --color-font: #ede9e0; --color-font-muted: #9a9487; --color-font-light: #8b8578;
+  --color-background: #141312; --color-background-secondary: #1c1a18; --color-background-card: #1c1a18;
+  --color-border: #34312c; --color-border-light: #2a2824; --color-border-primary: #8fa8ff;
+  --color-primary: #8fa8ff; --color-primary-light: #b3c3ff; --color-primary-dark: #6f8bf0;
 }
-.dark {
-  --color-shadow-nav: rgba(192, 132, 252, 0.15);
+
+html { scroll-behavior: smooth; }
+body { background: var(--color-background); color: var(--color-font); font-family: var(--font-heading); overflow-x: hidden; }
+:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+body::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 60; opacity: 0.07; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
-* {
-  font-family: "poppins", sans-serif;
-  font-weight: 400;
-}
+@keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes pulse-dot { 50% { opacity: 0.25; } }
+.marquee { animation: marquee 40s linear infinite; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .marquee { animation: none; } }
