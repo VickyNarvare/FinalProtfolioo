@@ -1,29 +1,16 @@
 import { AnimatePresence, MotionConfig } from 'motion/react';
 import { useCallback, useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router';
+import { AvailabilityStatus } from '../shared/components/AvailabilityStatus';
 import { Loading } from '../shared/components/Loading';
 import Navbar from '../shared/components/Navbar/Navbar';
 import { Footer } from './Footer';
 
-// Show the intro once per browser session.
-const alreadyLoaded = () => {
-  try {
-    return sessionStorage.getItem('loaded') === '1';
-  } catch {
-    return false;
-  }
-};
-
 export const MainLayout = () => {
   const { pathname, hash } = useLocation();
-  const [loading, setLoading] = useState(() => !alreadyLoaded());
+  const [loading, setLoading] = useState(true);
 
   const finish = useCallback(() => {
-    try {
-      sessionStorage.setItem('loaded', '1');
-    } catch {
-      /* storage unavailable, intro will just show again next visit */
-    }
     setLoading(false);
   }, []);
 
@@ -48,7 +35,14 @@ export const MainLayout = () => {
       </a>
       <Navbar />
       {/* Page mounts after the intro so the hero's text reveal plays on screen, not behind the overlay. */}
-      <main id="main">{!loading && <Outlet />}</main>
+      <main id="main">
+        {!loading && (
+          <>
+            <AvailabilityStatus />
+            <Outlet />
+          </>
+        )}
+      </main>
       <Footer />
     </MotionConfig>
   );

@@ -1,4 +1,3 @@
-import { PiCode } from 'react-icons/pi';
 import { Link } from 'react-router';
 const Logo = () => {
   return (
@@ -7,11 +6,13 @@ const Logo = () => {
       className="group flex cursor-pointer items-center gap-3"
       aria-label="Vicky Narvare - Home"
     >
-      <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-background-card shadow-sm transition-all duration-300 group-hover:border-primary group-hover:bg-background-secondary">
-        <PiCode
-          size={19}
-          strokeWidth={2}
-          className="text-primary transition-transform duration-300 group-hover:rotate-[-8deg] group-hover:scale-110"
+      <div className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-background-card shadow-sm transition-all duration-300 group-hover:border-primary group-hover:bg-background-secondary">
+        <span className="text-sm font-black tracking-[-0.12em] text-font">
+          V<span className="text-primary">N</span>
+        </span>
+        <span
+          aria-hidden="true"
+          className="absolute bottom-1.5 right-1.5 size-1 rounded-full bg-primary transition-transform duration-300 group-hover:scale-150"
         />
       </div>
 

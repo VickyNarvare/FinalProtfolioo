@@ -7,14 +7,7 @@ export const Hero = () => (
     id="home"
     className="flex min-h-svh flex-col justify-between pb-8 pt-28"
   >
-    <Container className="flex justify-between font-mono text-xs text-font-muted">
-      <span className="flex items-center gap-2">
-        <i
-          className="size-2 rounded-full bg-primary"
-          style={{ animation: 'pulse-dot 2.4s infinite' }}
-        />
-        Available for work
-      </span>
+    <Container className="flex justify-end font-mono text-xs text-font-muted">
       <span>Indore, India</span>
     </Container>
     <Container>

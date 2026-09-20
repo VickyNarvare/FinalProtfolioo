@@ -51,7 +51,7 @@ const Navbar = () => {
         <motion.div
           initial={false}
           animate={{
-            maxWidth: scrolled ? 1080 : 1536,
+            maxWidth: scrolled ? 1280 : 1536,
           }}
           transition={{
             duration: 0.7,
