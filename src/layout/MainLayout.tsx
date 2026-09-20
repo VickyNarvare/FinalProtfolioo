@@ -4,6 +4,7 @@ import { Outlet, useLocation } from 'react-router';
 import { AvailabilityStatus } from '../shared/components/AvailabilityStatus';
 import { Loading } from '../shared/components/Loading';
 import Navbar from '../shared/components/Navbar/Navbar';
+import { Seo } from '../shared/components/Seo';
 import { Footer } from './Footer';
 
 export const MainLayout = () => {
@@ -34,6 +35,7 @@ export const MainLayout = () => {
         Skip to content
       </a>
       <Navbar />
+      <Seo pathname={pathname} />
       {/* Page mounts after the intro so the hero's text reveal plays on screen, not behind the overlay. */}
       <main id="main">
         {!loading && (

@@ -79,16 +79,16 @@ export const AboutPreview = () => {
                       : ''
                   }`}
                 />
-                <p className="break-words font-mono text-xs uppercase tracking-[0.14em] text-primary">
+                <p className="wrap-wrap-break-words font-mono text-xs uppercase tracking-[0.14em] text-primary">
                   [ {j.start} - {j.end} ]
                 </p>
-                <h3 className="mt-4 break-words text-2xl font-extrabold uppercase leading-none tracking-tight md:text-5xl">
+                <h3 className="mt-4 wrap-break-words text-2xl font-extrabold uppercase leading-none tracking-tight md:text-5xl">
                   {j.title}
                 </h3>
-                <p className="mt-3 break-words text-sm text-font-muted md:text-base">
+                <p className="mt-3 wrap-break-words text-sm text-font-muted md:text-base">
                   {j.organization}
                 </p>
-                <p className="mt-3 max-w-3xl break-words text-base leading-relaxed text-font-muted transition-colors duration-300 group-hover:text-font md:text-lg">
+                <p className="mt-3 max-w-3xl wrap-break-words text-base leading-relaxed text-font-muted transition-colors duration-300 group-hover:text-font md:text-lg">
                   {j.description}
                 </p>
               </motion.li>

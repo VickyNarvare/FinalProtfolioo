@@ -132,6 +132,8 @@ const Navbar = () => {
                   text-font-muted
                   transition-all
                   duration-200
+                  dark:bg-background-card
+                  dark:text-font
                   hover:border-border-primary
                   hover:bg-background-secondary
                   hover:text-font
@@ -155,7 +157,7 @@ const Navbar = () => {
                   px-4
                   text-sm
                   font-medium
-                  text-white
+                  text-background-card
                   shadow-sm
                   transition-all
                   duration-200

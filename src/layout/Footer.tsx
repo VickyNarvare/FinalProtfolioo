@@ -16,8 +16,15 @@ export const Footer = () => (
         aria-label="Footer"
         className="flex flex-wrap gap-6 text-sm text-font-muted md:justify-center"
       >
-        {navigation.map((n) => (
-          <Link key={n.href} to={n.href} className="hover:text-primary">
+        {navigation.map((n, index) => (
+          <Link
+            key={n.href}
+            to={n.href}
+            className="font-mono text-xs uppercase tracking-[0.08em] text-font-muted hover:text-primary"
+          >
+            <span className="mr-2 text-[10px] text-font-light">
+              {String(index + 1).padStart(2, '0')}
+            </span>
             {n.label}
           </Link>
         ))}

@@ -1,5 +1,6 @@
-import { Mask } from '../../../shared/components/Mask';
+import { motion } from 'motion/react';
 import { Container } from '../../../shared/components/Container';
+import { Mask } from '../../../shared/components/Mask';
 
 const tags = [
   'Frontend',
@@ -20,11 +21,15 @@ export const Intro = () => (
       </h2>
     </Container>
     <div className="mt-14 border-y border-border py-5" aria-hidden="true">
-      <div className="marquee flex w-max gap-12 font-mono text-sm text-font-muted">
+      <motion.div
+        animate={{ x: ['0%', '-50%'] }}
+        transition={{ duration: 40, ease: 'linear', repeat: Infinity }}
+        className="flex w-max gap-12 font-mono text-sm text-font-muted"
+      >
         {[...tags, ...tags].map((t, i) => (
           <span key={i}>{t}</span>
         ))}
-      </div>
+      </motion.div>
     </div>
   </section>
 );

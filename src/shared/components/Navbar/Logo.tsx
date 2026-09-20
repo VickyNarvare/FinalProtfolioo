@@ -6,7 +6,7 @@ const Logo = () => {
       className="group flex cursor-pointer items-center gap-3"
       aria-label="Vicky Narvare - Home"
     >
-      <div className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-background-card shadow-sm transition-all duration-300 group-hover:border-primary group-hover:bg-background-secondary">
+      <div className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-background-card shadow-sm transition-all duration-300 group-hover:border-primary group-hover:bg-background-secondary dark:bg-background-card">
         <span className="text-sm font-black tracking-[-0.12em] text-font">
           V<span className="text-primary">N</span>
         </span>

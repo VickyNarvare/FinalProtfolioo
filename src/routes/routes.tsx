@@ -1,10 +1,4 @@
 import { createBrowserRouter } from 'react-router';
-import { AboutPage } from '../features/about/page/AboutPage';
-import { ContactPage } from '../features/contact/page/ContactPage';
-import { HomePage } from '../features/home/page/HomePage';
-import { ProjectDetailPage } from '../features/projects/page/ProjectDetailPage';
-import { ProjectsPage } from '../features/projects/page/ProjectsPage';
-import { SkillsPage } from '../features/skills/page/SkillsPage';
 import { MainLayout } from '../layout/MainLayout';
 
 export const router = createBrowserRouter([
@@ -12,12 +6,53 @@ export const router = createBrowserRouter([
     path: '/',
     element: <MainLayout />,
     children: [
-      { index: true, element: <HomePage /> },
-      { path: 'about', element: <AboutPage /> },
-      { path: 'projects', element: <ProjectsPage /> },
-      { path: 'projects/:slug', element: <ProjectDetailPage /> },
-      { path: 'skills', element: <SkillsPage /> },
-      { path: 'contact', element: <ContactPage /> },
+      {
+        index: true,
+        lazy: async () => {
+          const { HomePage } = await import('../features/home/page/HomePage');
+          return { Component: HomePage };
+        },
+      },
+      {
+        path: 'about',
+        lazy: async () => {
+          const { AboutPage } =
+            await import('../features/about/page/AboutPage');
+          return { Component: AboutPage };
+        },
+      },
+      {
+        path: 'projects',
+        lazy: async () => {
+          const { ProjectsPage } =
+            await import('../features/projects/page/ProjectsPage');
+          return { Component: ProjectsPage };
+        },
+      },
+      {
+        path: 'projects/:slug',
+        lazy: async () => {
+          const { ProjectDetailPage } =
+            await import('../features/projects/page/ProjectDetailPage');
+          return { Component: ProjectDetailPage };
+        },
+      },
+      {
+        path: 'skills',
+        lazy: async () => {
+          const { SkillsPage } =
+            await import('../features/skills/page/SkillsPage');
+          return { Component: SkillsPage };
+        },
+      },
+      {
+        path: 'contact',
+        lazy: async () => {
+          const { ContactPage } =
+            await import('../features/contact/page/ContactPage');
+          return { Component: ContactPage };
+        },
+      },
     ],
   },
 ]);
