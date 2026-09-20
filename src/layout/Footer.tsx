@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { Container } from '../shared/components/Container';
-import { navigation } from '../shared/components/Navbar/navigation';
+import { navigation } from '../shared/components/Navbar/Navigation';
 
 export const Footer = () => (
   <footer className="mt-24 border-t border-border py-12">

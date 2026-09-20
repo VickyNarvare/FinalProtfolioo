@@ -1,3 +1,8 @@
+import project5Image from '../../../assets/images/project5.webp';
+import project6Image from '../../../assets/images/project6.webp';
+import project7Image from '../../../assets/images/project7.webp';
+import project8Image from '../../../assets/images/project8.webp';
+import project9Image from '../../../assets/images/project9.webp';
 import type { Project } from '../../../types/project';
 
 export const projects: Project[] = [
@@ -22,7 +27,7 @@ export const projects: Project[] = [
     ],
     learned:
       'Managing complex state across multiple components, form validation patterns, and building reusable component architecture',
-    image: '../../../../public/images/project6.webp',
+    image: project6Image,
     imageAlt: 'Foodie Delight app screenshot',
     live: 'https://foodwebsite-vicky.vercel.app',
     github: 'https://github.com/VickyNarvare/Advance-Food-Ordering-App',
@@ -58,7 +63,7 @@ export const projects: Project[] = [
     ],
     learned:
       'Building admin interfaces, managing different user roles, and creating scalable component structures',
-    image: '../../../../public/images/project5.webp',
+    image: project5Image,
     imageAlt: 'Coffee Cup website screenshot',
     live: 'https://coffeeap.vercel.app/',
     github: 'https://github.com/VickyNarvare/coffeeapp',
@@ -90,7 +95,7 @@ export const projects: Project[] = [
     ],
     learned:
       'Improved skills in building visually-driven React websites, creating cinematic UI layouts, responsive design, image presentation, typography hierarchy, and designing portfolio experiences focused on client conversion',
-    image: '../../../../public/images/project9.webp',
+    image: project9Image,
     imageAlt: 'Noir Frame Studio photography website screenshot',
     live: 'https://photograpy-website-by-vicky.vercel.app/',
     github: 'https://github.com/VickyNarvare/PhotograpyWebsiteAPart1',
@@ -120,7 +125,7 @@ export const projects: Project[] = [
     ],
     learned:
       'Advanced CSS layouts, scroll-based animations, and creating professional business websites',
-    image: '../../../../public/images/project7.webp',
+    image: project7Image,
     imageAlt: 'FitnessClub Gym Website by Vicky Narvare',
     live: 'https://gymwebsite-vicky.vercel.app',
     github: 'https://github.com/VickyNarvare/GYM',
@@ -150,7 +155,7 @@ export const projects: Project[] = [
     ],
     learned:
       'Dark theme design principles, pricing table patterns, and building trust through testimonials',
-    image: '../../../../public/images/project8.webp',
+    image: project8Image,
     imageAlt: 'YESH Enterprises Business Platform by Vicky Narvare',
     live: 'https://yeshenterprises.vercel.app/',
     github: 'https://github.com/VickyNarvare/YeshEnterprises',

@@ -34,10 +34,10 @@ export const Hero = () => (
         MongoDB — from responsive interfaces and APIs to deployment.
       </p>
       <div className="flex flex-wrap gap-3 md:col-span-3 md:justify-end">
-        <Button href="/#projects" variant="solid" magnetic>
+        <Button href="/projects" variant="solid" magnetic>
           View Work
         </Button>
-        <Button href="/#contact" magnetic>
+        <Button href="/contact" magnetic>
           Contact
         </Button>
       </div>
