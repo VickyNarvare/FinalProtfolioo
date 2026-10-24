@@ -35,6 +35,11 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
 }
 body {
   background: var(--color-background);
@@ -42,6 +47,12 @@ body {
   font-family: var(--font-heading);
   line-height: 1.45;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection {
+  background: var(--color-primary);
+  color: var(--color-background);
 }
 :focus-visible {
   outline: 2px solid var(--color-primary);

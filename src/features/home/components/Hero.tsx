@@ -1,6 +1,6 @@
+import { AnimatedText } from '../../../shared/components/AnimatedText';
 import { Button } from '../../../shared/components/Button';
 import { Container } from '../../../shared/components/Container';
-import { Mask } from '../../../shared/components/Mask';
 
 export const Hero = () => (
   <section
@@ -11,11 +11,12 @@ export const Hero = () => (
       <span>Indore, India</span>
     </Container>
     <Container>
-      <h1 className="text-[19vw] font-extrabold tracking-tighter leading-[0.82] md:text-[17vw]">
-        <Mask>Vicky</Mask>
-        <Mask delay={0.12} className="md:pl-[10vw]">
-          Narvare
-        </Mask>
+      <h1
+        aria-label="Vicky Narvare"
+        className="text-[19vw] font-extrabold tracking-tighter leading-[0.82] md:text-[17vw]"
+      >
+        <AnimatedText text="Vicky" />
+        <AnimatedText text="Narvare" delay={0.18} className="md:pl-[10vw]" />
       </h1>
     </Container>
     <Container className="grid items-end gap-8 md:grid-cols-12">

@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from 'motion/react';
+import { useEffect, useRef } from 'react';
 import { FaGithub } from 'react-icons/fa6';
 import { RxCross2 } from 'react-icons/rx';
 import { Link, useLocation } from 'react-router';
@@ -11,6 +12,31 @@ interface MobileMenuProps {
 
 const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
   const { pathname } = useLocation();
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  // Close when the route changes.
+  useEffect(() => {
+    onClose();
+  }, [pathname, onClose]);
+
+  // Escape closes the menu, and the page behind it stays put while open.
+  useEffect(() => {
+    if (!open) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    closeRef.current?.focus();
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [open, onClose]);
 
   return (
     <AnimatePresence>
@@ -22,11 +48,14 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
+            aria-hidden="true"
             className="fixed inset-0 z-40 bg-black/10 backdrop-blur-sm lg:hidden"
           />
 
           {/* Menu */}
-          <motion.div
+          <motion.nav
+            id="mobile-menu"
+            aria-label="Mobile navigation"
             initial={{ opacity: 0, y: -10, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
@@ -35,7 +64,9 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
           >
             <div className="mb-2 flex items-center justify-end px-2 py-2">
               <button
+                ref={closeRef}
                 onClick={onClose}
+                aria-label="Close menu"
                 className="flex h-8 w-8 items-center justify-center rounded-lg text-font-muted hover:bg-background-secondary hover:text-font dark:text-font-muted"
               >
                 <RxCross2 size={20} />
@@ -80,7 +111,7 @@ const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
               <FaGithub size={17} />
               GitHub
             </a>
-          </motion.div>
+          </motion.nav>
         </>
       )}
     </AnimatePresence>

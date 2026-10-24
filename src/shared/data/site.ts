@@ -83,7 +83,7 @@ export const services: Item[] = [
 export const faq: Item[] = [
   {
     title: 'What kind of developer are you?',
-    desc: 'A full stack MERN developer from Indore with 2+ years of experience and 8 live projects.',
+    desc: 'A full stack MERN developer from Indore with 1+ years of experience and a portfolio of live projects.',
   },
   {
     title: 'What technologies do you work with?',

@@ -13,6 +13,7 @@ export const ProjectPreview = ({
       src={p.image}
       alt={p.imageAlt ?? `${p.name} preview`}
       loading="lazy"
+      decoding="async"
       className={cn('aspect-16/10 w-full object-cover', className)}
     />
   ) : (

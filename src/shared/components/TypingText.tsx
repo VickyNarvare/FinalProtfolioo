@@ -35,12 +35,13 @@ export const TypingText = ({ text }: { text: string }) => {
 
   return (
     <span className="inline-flex items-baseline">
-      {reducedMotion ? text : visibleText}
-      {!reducedMotion && (
-        <span className="ml-0.5 animate-pulse text-primary" aria-hidden="true">
-          |
-        </span>
-      )}
+      <span className="sr-only">{text}</span>
+      <span aria-hidden="true">
+        {reducedMotion ? text : visibleText}
+        {!reducedMotion && (
+          <span className="ml-0.5 animate-pulse text-primary">|</span>
+        )}
+      </span>
     </span>
   );
 };

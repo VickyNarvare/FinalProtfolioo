@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vicky-narvare.vercel.app/sitemap.xml

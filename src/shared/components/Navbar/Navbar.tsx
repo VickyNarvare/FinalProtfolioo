@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { HiOutlineMenu } from 'react-icons/hi';
 import { Link } from 'react-router';
 
@@ -10,8 +10,9 @@ import NavLinks from './NavLinks';
 import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(() => window.scrollY > 40);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const closeMenu = useCallback(() => setMobileOpen(false), []);
 
   // ============================================
   // SCROLL DETECTION
@@ -172,7 +173,9 @@ const Navbar = () => {
               {/* Mobile */}
               <button
                 onClick={() => setMobileOpen((previous) => !previous)}
-                aria-label="Toggle menu"
+                aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={mobileOpen}
+                aria-controls="mobile-menu"
                 className="
                   flex
                   h-9
@@ -195,7 +198,7 @@ const Navbar = () => {
           </motion.div>
 
           {/* Mobile menu */}
-          <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
+          <MobileMenu open={mobileOpen} onClose={closeMenu} />
         </motion.div>
       </header>
     </>

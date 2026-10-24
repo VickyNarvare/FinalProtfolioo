@@ -37,7 +37,7 @@ export const MainLayout = () => {
       <Navbar />
       <Seo pathname={pathname} />
       {/* Page mounts after the intro so the hero's text reveal plays on screen, not behind the overlay. */}
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         {!loading && (
           <>
             <AvailabilityStatus />

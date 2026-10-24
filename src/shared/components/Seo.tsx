@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { projects } from '../../features/projects/data/projects';
+import { contact } from '../data/site';
 
 const siteUrl = 'https://vicky-narvare.vercel.app';
 const defaultDescription =
@@ -31,6 +33,15 @@ const pageMeta: Record<string, { title: string; description: string }> = {
   },
 };
 
+const notFoundMeta = {
+  title: 'Page not found | Vicky Narvare',
+  description:
+    'This page does not exist. Explore the projects, skills and contact details of Vicky Narvare instead.',
+};
+
+const truncate = (value: string, length = 155) =>
+  value.length > length ? `${value.slice(0, length - 1).trimEnd()}…` : value;
+
 const setMeta = (
   attribute: 'name' | 'property',
   key: string,
@@ -47,16 +58,71 @@ const setMeta = (
   element.setAttribute('content', content);
 };
 
+const setJsonLd = (id: string, data: unknown) => {
+  let script = document.head.querySelector<HTMLScriptElement>(
+    `script[data-seo="${id}"]`
+  );
+  if (!script) {
+    script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.dataset.seo = id;
+    document.head.appendChild(script);
+  }
+  script.textContent = JSON.stringify(data);
+};
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Vicky Narvare',
+  url: siteUrl,
+  jobTitle: 'MERN Stack Developer',
+  description: defaultDescription,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Indore',
+    addressRegion: 'Madhya Pradesh',
+    addressCountry: 'IN',
+  },
+  sameAs: [contact.github, contact.linkedin],
+  knowsAbout: [
+    'React',
+    'Next.js',
+    'Node.js',
+    'Express.js',
+    'MongoDB',
+    'MySQL',
+    'Tailwind CSS',
+  ],
+};
+
 export const Seo = ({ pathname }: { pathname: string }) => {
   useEffect(() => {
-    const normalizedPath = pathname.startsWith('/projects/')
-      ? '/projects'
-      : pathname;
-    const meta = pageMeta[normalizedPath] ?? pageMeta['/'];
-    const canonicalUrl = `${siteUrl}${pathname === '/' ? '/' : pathname}`;
+    const normalizedPath =
+      pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
+
+    const project = projects.find(
+      (p) => normalizedPath === `/projects/${p.slug}`
+    );
+
+    const meta =
+      pageMeta[normalizedPath] ??
+      (project
+        ? {
+            title: `${project.name} | Vicky Narvare`,
+            description: truncate(project.subtitle ?? project.description),
+          }
+        : notFoundMeta);
+
+    const isNotFound = !pageMeta[normalizedPath] && !project;
+    const canonicalUrl = `${siteUrl}${
+      normalizedPath === '/' ? '/' : normalizedPath
+    }`;
 
     document.title = meta.title;
     setMeta('name', 'description', meta.description);
+    setMeta('name', 'robots', isNotFound ? 'noindex, follow' : 'index, follow');
+    setMeta('property', 'og:type', project ? 'article' : 'website');
     setMeta('property', 'og:title', meta.title);
     setMeta('property', 'og:description', meta.description);
     setMeta('property', 'og:url', canonicalUrl);
@@ -72,6 +138,22 @@ export const Seo = ({ pathname }: { pathname: string }) => {
       document.head.appendChild(canonical);
     }
     canonical.href = canonicalUrl;
+
+    setJsonLd('person', personSchema);
+    if (project) {
+      setJsonLd('project', {
+        '@context': 'https://schema.org',
+        '@type': 'CreativeWork',
+        name: project.name,
+        description: project.description,
+        url: `${siteUrl}/projects/${project.slug}`,
+        image: project.image ? `${siteUrl}${project.image}` : undefined,
+        author: { '@type': 'Person', name: 'Vicky Narvare' },
+        keywords: project.tech.join(', '),
+      });
+    } else {
+      document.head.querySelector('script[data-seo="project"]')?.remove();
+    }
   }, [pathname]);
 
   return null;

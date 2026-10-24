@@ -1,10 +1,13 @@
 import { createBrowserRouter } from 'react-router';
 import { MainLayout } from '../layout/MainLayout';
+import { RouteError } from '../layout/RouteError';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
+    errorElement: <RouteError />,
+    HydrateFallback: () => null,
     children: [
       {
         index: true,
@@ -51,6 +54,13 @@ export const router = createBrowserRouter([
           const { ContactPage } =
             await import('../features/contact/page/ContactPage');
           return { Component: ContactPage };
+        },
+      },
+      {
+        path: '*',
+        lazy: async () => {
+          const { NotFound } = await import('../layout/NotFound');
+          return { Component: NotFound };
         },
       },
     ],

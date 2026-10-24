@@ -5,7 +5,7 @@ import { ProjectGrid } from '../components/ProjectGrid';
 export const ProjectsPage = () => (
   <section className="min-h-screen py-32">
     <Container>
-      <SectionHeading label="projects" lines={['Selected work.']} />
+      <SectionHeading as="h1" label="projects" lines={['Selected work.']} />
       <ProjectGrid />
     </Container>
   </section>
