@@ -32,7 +32,7 @@ export const Accordion = ({
                   {String(index + 1).padStart(2, '0')}
                 </span>
               )}
-              <span className="flex-1 text-2xl font-extrabold tracking-tight transition-colors group-hover:text-primary md:text-3xl">
+              <span className="flex-1 text-2xl font-medium tracking-tight transition-colors group-hover:text-primary md:text-3xl">
                 {item.title}
               </span>
               <span

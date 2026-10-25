@@ -1,3 +1,8 @@
+export interface ProjectChallenge {
+  problem: string;
+  solution: string;
+}
+
 export interface Project {
   slug: string;
   name: string;
@@ -11,6 +16,7 @@ export interface Project {
   subtitle?: string;
   problem?: string;
   solution?: string;
+  challenges?: ProjectChallenge[];
   features?: string[];
   learned?: string;
   role?: string;

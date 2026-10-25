@@ -1,38 +1,38 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-heading: 'Bricolage Grotesque', system-ui, sans-serif;
+  /* Editorial pairing: serif display, neutral sans for reading, mono for labels. */
+  --font-heading: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  /* Purple is the working accent; mint only marks availability. */
-  --color-font: #17131c;
-  --color-font-muted: #5c5365;
-  --color-font-light: #72687c;
-  --color-background: #fbf9ff;
-  --color-background-secondary: #f2ecfa;
-  --color-background-card: #f7f2fd;
-  --color-border: #ddd3e8;
-  --color-border-primary: #a855f7;
-  --color-primary: #9333ea;
-  --color-primary-dark: #7e22ce;
-  --color-accent: #0a7d61;
+  /* Light: warm paper, forest green ink. */
+  --color-font: #102e24;
+  --color-font-muted: #46584d;
+  --color-font-light: #556759;
+  --color-background: #f1ecdd;
+  --color-background-secondary: #e8e1cf;
+  --color-background-card: #ebe5d5;
+  --color-border: #d2c8b2;
+  --color-border-primary: #8aa595;
+  --color-primary: #123d30;
+  --color-primary-dark: #0b2a21;
 
   --shadow-nav: 0 10px 30px color-mix(in srgb, var(--color-font) 10%, transparent);
 }
 
-/* dark: ink surfaces, purple signal, mint status */
+/* Dark: deep forest surfaces, warm cream ink. */
 .dark {
-  --color-font: #f4effc;
-  --color-font-muted: #a9a0b8;
-  --color-font-light: #8b8199;
-  --color-background: #0c0a11;
-  --color-background-secondary: #16111e;
-  --color-background-card: #14101b;
-  --color-border: #322542;
-  --color-border-primary: #a855f7;
-  --color-primary: #a855f7;
-  --color-primary-dark: #b975fb;
-  --color-accent: #75f4c8;
+  --color-font: #f3eee1;
+  --color-font-muted: #c2cfc7;
+  --color-font-light: #9cafa4;
+  --color-background: #0b342a;
+  --color-background-secondary: #0f3d31;
+  --color-background-card: #0e3a2e;
+  --color-border: #2b5547;
+  --color-border-primary: #7e9f90;
+  --color-primary: #ede6d3;
+  --color-primary-dark: #dcd3bc;
 }
 
 html {
@@ -46,8 +46,8 @@ html.dark {
 body {
   background: var(--color-background);
   color: var(--color-font);
-  font-family: var(--font-heading);
-  line-height: 1.45;
+  font-family: var(--font-sans);
+  line-height: 1.55;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -56,6 +56,8 @@ body {
 h1,
 h2,
 h3 {
+  font-family: var(--font-heading);
+  font-weight: 500;
   text-wrap: balance;
 }
 p {
@@ -63,7 +65,7 @@ p {
 }
 
 ::selection {
-  background: var(--color-accent);
+  background: var(--color-primary);
   color: var(--color-background);
 }
 :focus-visible {

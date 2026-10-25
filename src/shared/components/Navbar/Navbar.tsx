@@ -13,7 +13,7 @@ import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(() => window.scrollY > 24);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(true);
   const closeMenu = useCallback(() => setMobileOpen(false), []);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -39,7 +39,7 @@ const Navbar = () => {
           mobileOpen
             ? 'border-border bg-background'
             : scrolled
-              ? 'border-border bg-background/90'
+              ? 'border-border bg-background'
               : 'border-transparent bg-background/60'
         }`}
       >

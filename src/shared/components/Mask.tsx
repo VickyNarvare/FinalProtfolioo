@@ -23,7 +23,7 @@ export const Mask = ({
   return (
     <span
       ref={ref}
-      className={cn('block overflow-hidden pb-[0.08em]', className)}
+      className={cn('block overflow-hidden pb-[0.12em]', className)}
     >
       <motion.span
         className="block"

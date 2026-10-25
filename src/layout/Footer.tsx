@@ -14,7 +14,7 @@ export const Footer = () => (
     <Container>
       <div className="grid gap-10 md:grid-cols-12 md:gap-8">
         <div className="md:col-span-4">
-          <p className="text-2xl font-extrabold tracking-tighter">
+          <p className="text-2xl font-medium tracking-[-0.02em]">
             Vicky Narvare
           </p>
           <p className="mt-1 text-sm text-font-muted">

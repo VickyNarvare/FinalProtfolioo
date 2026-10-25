@@ -1,7 +1,8 @@
 import { MotionConfig } from 'motion/react';
 import { useLayoutEffect, useRef } from 'react';
-import { Outlet, useLocation } from 'react-router';
+import { useLocation } from 'react-router';
 import Navbar from '../shared/components/Navbar/Navbar';
+import { PageTransition } from '../shared/components/PageTransition';
 import { Seo } from '../shared/components/Seo';
 import { Footer } from './Footer';
 
@@ -39,7 +40,7 @@ export const MainLayout = () => {
       <Navbar />
       <Seo pathname={pathname} />
       <main id="main" tabIndex={-1}>
-        <Outlet />
+        <PageTransition />
       </main>
       <Footer />
     </MotionConfig>

@@ -27,7 +27,7 @@ export const ProjectPreview = ({
         className
       )}
     >
-      <span className="text-[10vw] font-extrabold leading-none tracking-tighter text-font md:text-[5vw]">
+      <span className="text-[10vw] font-medium leading-none tracking-[-0.02em] text-font md:text-[5vw]">
         {p.name}
       </span>
       <span className="absolute right-5 top-4 font-mono text-xs text-font-light">

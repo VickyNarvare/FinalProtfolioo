@@ -16,7 +16,7 @@ export const RouteError = () => {
       <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">
         Error
       </p>
-      <h1 className="mt-4 text-5xl font-extrabold tracking-tighter md:text-7xl">
+      <h1 className="mt-4 text-5xl font-medium tracking-[-0.02em] md:text-7xl">
         Something broke.
       </h1>
       <p className="mt-4 max-w-lg text-lg text-font-muted">

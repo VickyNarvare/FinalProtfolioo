@@ -1,4 +1,5 @@
 import { Container } from '../../../shared/components/Container';
+import { Reveal } from '../../../shared/components/Reveal';
 import { SectionHeading } from '../../../shared/components/SectionHeading';
 import { services } from '../../../shared/data/site';
 
@@ -12,14 +13,16 @@ export const Services = () => (
       />
       <div className="border-t border-border">
         {services.map((s, i) => (
-          <div
+          <Reveal
             key={s.title}
+            delay={Math.min(i * 0.05, 0.2)}
+            y={20}
             className="group grid gap-4 border-b border-border py-8 transition-colors hover:bg-background-secondary md:grid-cols-12 md:px-4"
           >
             <span className="font-mono text-xs text-font-light md:col-span-1">
               {String(i + 1).padStart(2, '0')}
             </span>
-            <h3 className="text-3xl font-extrabold tracking-tighter transition-transform duration-300 group-hover:translate-x-1 md:col-span-5">
+            <h3 className="text-3xl font-medium tracking-[-0.02em] transition-transform duration-300 group-hover:translate-x-1 md:col-span-5">
               {s.title}
             </h3>
             <p className="text-font-muted md:col-span-3">{s.desc}</p>
@@ -28,7 +31,7 @@ export const Services = () => (
                 <li key={t}>{t}</li>
               ))}
             </ul>
-          </div>
+          </Reveal>
         ))}
       </div>
     </Container>

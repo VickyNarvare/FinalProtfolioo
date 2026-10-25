@@ -12,7 +12,7 @@ const Logo = () => {
         </span>
         <span
           aria-hidden="true"
-          className="absolute bottom-1.5 right-1.5 size-1 rounded-full bg-accent transition-transform duration-300 group-hover:scale-150"
+          className="absolute bottom-1.5 right-1.5 size-1 rounded-full bg-primary transition-transform duration-300 group-hover:scale-150"
         />
       </div>
 

@@ -36,7 +36,7 @@ export const HowItWorks = () => (
             <span className="font-mono text-xs text-font-light">
               {step.number}
             </span>
-            <h3 className="mt-6 text-2xl font-extrabold tracking-tighter">
+            <h3 className="mt-6 text-2xl font-medium tracking-[-0.02em]">
               {step.title}
             </h3>
             <p className="mt-3 max-w-sm leading-relaxed text-font-muted">

@@ -16,7 +16,7 @@ export const Hero = () => (
   >
     <Container className="flex flex-wrap items-center justify-between gap-3 font-mono text-[11px] uppercase tracking-[0.16em]">
       <p className="flex items-center gap-2 text-font-muted">
-        <span className="size-1.5 bg-accent" aria-hidden="true" />
+        <span className="size-1.5 bg-primary" aria-hidden="true" />
         Available for new projects
       </p>
       <p className="text-font-light">Indore, India</p>
@@ -25,7 +25,7 @@ export const Hero = () => (
     <Container>
       <h1
         aria-label="Vicky Narvare"
-        className="text-[18vw] font-extrabold leading-[0.82] tracking-tighter md:text-[16vw]"
+        className="text-[18vw] font-medium leading-[0.82] tracking-[-0.02em] md:text-[16vw]"
       >
         <Mask>Vicky</Mask>
         <Mask delay={0.08} className="md:pl-[9vw]">
@@ -36,7 +36,7 @@ export const Hero = () => (
 
     <Container className="grid gap-8 border-t border-border pt-8 md:grid-cols-2 md:gap-10 lg:grid-cols-12">
       <div className="lg:col-span-5">
-        <h2 className="text-2xl font-extrabold tracking-tight md:text-3xl">
+        <h2 className="text-2xl font-medium tracking-tight md:text-3xl">
           MERN stack developer
         </h2>
         <p className="mt-3 max-w-md leading-relaxed text-font-muted">

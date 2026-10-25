@@ -22,12 +22,12 @@ export const SectionHeading = ({
   className?: string;
 }) => (
   <div className={cn('mb-10 md:mb-14', className)}>
-    <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-accent">
+    <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-primary">
       {label}
     </p>
     <Heading
       className={cn(
-        'mt-3 max-w-4xl font-extrabold tracking-tighter',
+        'mt-3 max-w-4xl font-medium tracking-[-0.02em]',
         sizes[size]
       )}
     >

@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { Container } from '../../../shared/components/Container';
+import { Reveal } from '../../../shared/components/Reveal';
 import { projects } from '../../projects/data/projects';
 import { SectionHeading } from '../../../shared/components/SectionHeading';
 
@@ -48,36 +49,37 @@ export const HomeOverview = () => (
       />
 
       <div className="border-t border-border">
-        {overview.map((item) => (
-          <Link
-            key={item.href}
-            to={item.href}
-            className="group grid gap-4 border-b border-border py-7 transition-colors hover:bg-background-secondary md:grid-cols-12 md:px-4"
-          >
-            <span className="font-mono text-[10px] text-font-light md:col-span-1">
-              {item.number}
-            </span>
-            <div className="md:col-span-4">
-              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
-                {item.label}
-              </p>
-              <h3 className="mt-2 text-2xl font-extrabold tracking-tighter md:text-3xl">
-                {item.title}
-              </h3>
-            </div>
-            <p className="max-w-lg text-font-muted md:col-span-5">
-              {item.description}
-            </p>
-            <span className="inline-flex items-center gap-1.5 self-start font-mono text-[10px] uppercase tracking-[0.14em] text-font-light transition-colors group-hover:text-font md:col-span-2 md:self-center md:justify-end">
-              Open
-              <span
-                aria-hidden="true"
-                className="transition-transform duration-200 group-hover:translate-x-1"
-              >
-                →
+        {overview.map((item, index) => (
+          <Reveal key={item.href} delay={Math.min(index * 0.05, 0.2)} y={20}>
+            <Link
+              to={item.href}
+              className="group grid gap-4 border-b border-border py-7 transition-colors hover:bg-background-secondary md:grid-cols-12 md:px-4"
+            >
+              <span className="font-mono text-[10px] text-font-light md:col-span-1">
+                {item.number}
               </span>
-            </span>
-          </Link>
+              <div className="md:col-span-4">
+                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary">
+                  {item.label}
+                </p>
+                <h3 className="mt-2 text-2xl font-medium tracking-[-0.02em] md:text-3xl">
+                  {item.title}
+                </h3>
+              </div>
+              <p className="max-w-lg text-font-muted md:col-span-5">
+                {item.description}
+              </p>
+              <span className="inline-flex items-center gap-1.5 self-start font-mono text-[10px] uppercase tracking-[0.14em] text-font-light transition-colors group-hover:text-font md:col-span-2 md:self-center md:justify-end">
+                Open
+                <span
+                  aria-hidden="true"
+                  className="transition-transform duration-200 group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </span>
+            </Link>
+          </Reveal>
         ))}
       </div>
     </Container>

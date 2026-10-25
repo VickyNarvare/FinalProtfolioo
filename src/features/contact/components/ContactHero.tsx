@@ -48,10 +48,10 @@ export const ContactHero = () => (
     <Container>
       <div className="grid gap-8 border-b border-border pb-8 md:grid-cols-12 md:items-end md:pb-10">
         <div className="md:col-span-7">
-          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
             Contact
           </p>
-          <h1 className="mt-3 text-[clamp(3.5rem,14vw,10rem)] font-extrabold leading-[0.82] tracking-tighter">
+          <h1 className="mt-3 text-[clamp(3.5rem,14vw,10rem)] font-medium leading-[0.82] tracking-[-0.02em]">
             <Mask>Let&apos;s talk.</Mask>
           </h1>
         </div>
@@ -83,14 +83,14 @@ export const ContactHero = () => (
         </div>
 
         <div className="min-w-0 md:col-span-7">
-          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-primary">
             Start with email
           </p>
           <a
             href={`mailto:${contact.email}`}
             className="group mt-3 flex items-baseline justify-between gap-4 border-b border-border pb-5"
           >
-            <span className="min-w-0 text-lg font-extrabold tracking-tight transition-colors [overflow-wrap:anywhere] group-hover:text-primary sm:text-2xl md:text-3xl">
+            <span className="min-w-0 text-lg font-medium tracking-tight transition-colors [overflow-wrap:anywhere] group-hover:text-primary sm:text-2xl md:text-3xl">
               {contact.email}
             </span>
             <FiArrowUpRight

@@ -1,9 +1,9 @@
 import { AnimatePresence, motion } from 'motion/react';
 import { useEffect, useRef } from 'react';
 import type { RefObject } from 'react';
-import { FaGithub } from 'react-icons/fa6';
 import { FiArrowUpRight } from 'react-icons/fi';
 import { Link, useLocation } from 'react-router';
+import { contact } from '../../../shared/data/site';
 import { navigation } from './Navigation';
 
 interface MobileMenuProps {
@@ -12,22 +12,34 @@ interface MobileMenuProps {
   triggerRef: RefObject<HTMLButtonElement | null>;
 }
 
+const socials = [
+  { label: 'GitHub', href: contact.github },
+  { label: 'LinkedIn', href: contact.linkedin },
+  { label: 'WhatsApp', href: contact.whatsapp },
+];
+
 const listVariants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.035, delayChildren: 0.02 } },
+  show: { transition: { staggerChildren: 0.045, delayChildren: 0.05 } },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, x: -8 },
-  show: { opacity: 1, x: 0 },
+  hidden: { opacity: 0, y: 14 },
+  show: { opacity: 1, y: 0 },
 };
 
 const MobileMenu = ({ open, onClose, triggerRef }: MobileMenuProps) => {
   const { pathname } = useLocation();
   const panelRef = useRef<HTMLElement>(null);
+  const isFirstRender = useRef(true);
 
-  // Close when the route changes.
+  // Close when the route changes, but not on the initial mount.
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
     onClose();
   }, [pathname, onClose]);
 
@@ -94,33 +106,31 @@ const MobileMenu = ({ open, onClose, triggerRef }: MobileMenuProps) => {
   return (
     <AnimatePresence>
       {open && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            aria-hidden="true"
-            className="fixed inset-x-0 bottom-0 top-16 z-40 bg-black/30 lg:hidden"
-          />
+        <motion.nav
+          ref={panelRef}
+          id="mobile-menu"
+          aria-label="Mobile navigation"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="fixed inset-x-0 bottom-0 top-16 z-40 flex flex-col overflow-y-auto overscroll-contain bg-background text-font lg:hidden"
+        >
+          <div className="mx-auto flex min-h-full w-full max-w-350 flex-col px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-6 md:px-10 md:pt-10">
+            <div className="flex items-end justify-between gap-4 border-b border-border pb-4">
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary">
+                Menu
+              </p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-font-light">
+                {String(navigation.length).padStart(2, '0')} sections
+              </p>
+            </div>
 
-          {/* Menu */}
-          <motion.nav
-            ref={panelRef}
-            id="mobile-menu"
-            aria-label="Mobile navigation"
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-x-0 top-full z-50 border-b border-border bg-background px-5 pb-5 pt-1 text-font md:px-10 lg:hidden"
-          >
             <motion.div
               variants={listVariants}
               initial="hidden"
               animate="show"
-              className="space-y-0.5"
+              className="flex-1"
             >
               {navigation.map((item, index) => {
                 const isActive =
@@ -133,48 +143,98 @@ const MobileMenu = ({ open, onClose, triggerRef }: MobileMenuProps) => {
                       to={item.href}
                       onClick={onClose}
                       aria-current={isActive ? 'page' : undefined}
-                      className={`flex items-center gap-3 border-b border-border px-1 py-3.5 font-mono text-xs uppercase tracking-[0.08em] transition-colors duration-200 ${
-                        isActive
-                          ? 'text-font'
-                          : 'text-font-muted hover:text-font'
-                      }`}
+                      className="group flex items-center justify-between gap-5 border-b border-border py-4 md:py-5"
                     >
-                      <span
-                        className={`text-[10px] ${
-                          isActive ? 'text-primary' : 'text-font-light'
-                        }`}
-                      >
-                        {String(index + 1).padStart(2, '0')}
+                      <span className="flex min-w-0 items-baseline gap-4 md:gap-6">
+                        <span
+                          className={`font-mono text-[10px] ${
+                            isActive ? 'text-primary' : 'text-font-light'
+                          }`}
+                        >
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <span
+                          className={`font-heading text-[clamp(2.25rem,10vw,3.75rem)] leading-[0.95] tracking-[-0.02em] transition-colors duration-200 ${
+                            isActive
+                              ? 'text-primary'
+                              : 'text-font group-hover:text-primary'
+                          }`}
+                        >
+                          {item.label}
+                        </span>
                       </span>
-                      {item.label}
+
+                      <span className="flex shrink-0 items-center gap-2">
+                        {isActive && (
+                          <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-primary">
+                            Current
+                          </span>
+                        )}
+                        <FiArrowUpRight
+                          aria-hidden="true"
+                          size={18}
+                          className={`transition-[transform,color] duration-200 ${
+                            isActive
+                              ? 'text-primary'
+                              : 'text-font-light group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary'
+                          }`}
+                        />
+                      </span>
                     </Link>
                   </motion.div>
                 );
               })}
             </motion.div>
 
-            <div className="mt-4 flex items-center gap-2">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.28, duration: 0.35 }}
+              className="mt-8 border-t border-border pt-6"
+            >
+              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-font-light">
+                Start a conversation
+              </p>
               <a
-                href="https://github.com/VickyNarvare"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub profile"
-                className="flex size-11 shrink-0 items-center justify-center rounded-lg border border-border text-font-muted transition-colors duration-200 hover:border-border-primary hover:text-font"
+                href={`mailto:${contact.email}`}
+                className="mt-2 block break-all font-heading text-2xl leading-tight tracking-[-0.02em] text-font transition-colors hover:text-primary md:text-3xl"
               >
-                <FaGithub size={17} />
+                {contact.email}
               </a>
+
+              <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 font-mono text-[10px] uppercase tracking-[0.14em] text-font-muted">
+                {socials.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-font"
+                  >
+                    {social.label}
+                  </a>
+                ))}
+              </div>
 
               <Link
                 to="/contact"
                 onClick={onClose}
-                className="flex h-11 flex-1 items-center justify-between rounded-lg bg-primary-dark px-4 font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-background transition-opacity duration-300 hover:opacity-90"
+                className="mt-5 flex min-h-12 items-center justify-between rounded-lg bg-primary px-4 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-background transition-colors duration-200 hover:bg-primary-dark"
               >
                 Let&apos;s talk
-                <FiArrowUpRight aria-hidden="true" size={14} />
+                <FiArrowUpRight aria-hidden="true" size={15} />
               </Link>
-            </div>
-          </motion.nav>
-        </>
+
+              <div className="mt-5 flex items-center justify-between gap-4 font-mono text-[9px] uppercase tracking-[0.14em] text-font-light">
+                <span>Indore, India</span>
+                <span className="flex items-center gap-2">
+                  <span className="size-1.5 bg-primary" aria-hidden="true" />
+                  Available for work
+                </span>
+              </div>
+            </motion.div>
+          </div>
+        </motion.nav>
       )}
     </AnimatePresence>
   );

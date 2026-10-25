@@ -1,6 +1,7 @@
 import { motion, useScroll } from 'motion/react';
 import { useRef } from 'react';
 import { Container } from '../../../shared/components/Container';
+import { Reveal } from '../../../shared/components/Reveal';
 import { journey } from '../data/journey';
 
 export const Timeline = () => {
@@ -13,12 +14,12 @@ export const Timeline = () => {
   return (
     <section className="py-20 md:py-28">
       <Container>
-        <div className="grid items-end gap-5 border-b border-border pb-6 md:grid-cols-12">
+        <Reveal className="grid items-end gap-5 border-b border-border pb-6 md:grid-cols-12" y={20}>
           <div className="md:col-span-6">
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-accent">
+            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-primary">
               Journey
             </p>
-            <h2 className="mt-3 text-5xl font-extrabold uppercase leading-none tracking-tighter md:text-6xl">
+            <h2 className="mt-3 text-5xl font-medium uppercase leading-none tracking-[-0.02em] md:text-6xl">
               Timeline
             </h2>
           </div>
@@ -28,7 +29,7 @@ export const Timeline = () => {
           <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-font-light md:col-span-2 md:text-right">
             {journey.length} entries
           </span>
-        </div>
+        </Reveal>
         <div className="mt-14">
           <ol
             ref={timelineRef}
@@ -36,7 +37,7 @@ export const Timeline = () => {
           >
             <motion.span
               aria-hidden="true"
-              className="pointer-events-none absolute -left-px top-0 z-10 w-px origin-top bg-accent"
+              className="pointer-events-none absolute -left-px top-0 z-10 w-px origin-top bg-primary"
               style={{ height: '100%', scaleY: scrollYProgress }}
             />
             {journey.map((entry, index) => (
@@ -54,12 +55,12 @@ export const Timeline = () => {
               >
                 <span
                   aria-hidden="true"
-                  className="absolute -left-1.25 top-11 size-2 rounded-full bg-accent md:top-13"
+                  className="absolute -left-1.25 top-11 size-2 rounded-full bg-primary md:top-13"
                 />
                 <p className="wrap-break-word font-mono text-[11px] uppercase tracking-[0.14em] text-primary-dark">
                   [ {entry.start} - {entry.end} ]
                 </p>
-                <h3 className="mt-4 wrap-break-word text-2xl font-extrabold uppercase leading-none tracking-tight md:text-4xl">
+                <h3 className="mt-4 wrap-break-word text-2xl font-medium uppercase leading-none tracking-tight md:text-4xl">
                   {entry.title}
                 </h3>
                 <p className="mt-3 wrap-break-word text-sm text-font-muted md:text-base">

@@ -77,7 +77,7 @@ export const SkillsStack = () => (
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
             Skills
           </p>
-          <h1 className="mt-3 max-w-3xl text-5xl font-extrabold leading-[0.9] tracking-tighter md:text-7xl">
+          <h1 className="mt-3 max-w-3xl text-5xl font-medium leading-[0.9] tracking-[-0.02em] md:text-7xl">
             <Mask>Tools I build with.</Mask>
           </h1>
         </div>
@@ -138,7 +138,7 @@ export const SkillsStack = () => (
                 <span className="font-mono text-[10px] text-font-light">
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <h2 className="text-2xl font-extrabold tracking-tight md:text-3xl">
+                <h2 className="text-2xl font-medium tracking-tight md:text-3xl">
                   {group}
                 </h2>
                 <span

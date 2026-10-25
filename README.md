@@ -64,7 +64,7 @@ Project images live in `src/assets/images/` and are imported by the project data
 ## Design notes
 
 - The visual language is editorial rather than card-based: ruled sections, asymmetric headline sizes, mono metadata and project screenshots that keep their full 1.95:1 crop.
-- The palette and typography tokens are defined in Tailwind's `@theme` block in `src/index.css`. Purple carries links and actions; mint is reserved for section labels and availability.
+- The palette and typography tokens are defined in Tailwind's `@theme` block in `src/index.css`. Deep forest green and warm cream carry the interface in both themes: Fraunces sets headings, Inter sets body copy and JetBrains Mono sets labels.
 - Dark mode is the default. The user's choice is stored in `localStorage` and applied before first paint to prevent a flash.
 - There is no blocking loading screen: the page paints immediately and route changes jump to the top.
 - Animations respect `prefers-reduced-motion`.
