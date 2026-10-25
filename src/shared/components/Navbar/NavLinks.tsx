@@ -17,27 +17,26 @@ const NavLinks = () => {
             key={item.href}
             to={item.href}
             aria-current={isActive ? 'page' : undefined}
-            className={`relative flex items-center gap-2 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.1em] transition-colors duration-200 ${
+            className={`relative flex items-center gap-2 px-2.5 py-2 font-mono text-[11px] uppercase tracking-[0.1em] transition-colors duration-200 xl:px-3 ${
               isActive ? 'text-font' : 'text-font-muted hover:text-font'
             }`}
           >
-            <span
-              className={`text-[10px] transition-colors duration-200 ${
-                isActive ? 'text-primary' : 'text-font-light'
-              }`}
-            >
-              {String(index + 1).padStart(2, '0')}
-            </span>
-            <span>{item.label}</span>
-
             {isActive && (
               <motion.span
                 layoutId="nav-active"
                 initial={false}
                 transition={{ type: 'spring', stiffness: 380, damping: 32 }}
-                className="absolute inset-x-3 bottom-0 h-px bg-primary"
+                className="absolute inset-0 rounded-md bg-background-secondary"
               />
             )}
+            <span
+              className={`relative text-[10px] transition-colors duration-200 ${
+                isActive ? 'text-primary' : 'text-font-light'
+              }`}
+            >
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <span className="relative">{item.label}</span>
           </Link>
         );
       })}

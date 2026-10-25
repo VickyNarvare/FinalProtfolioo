@@ -10,7 +10,7 @@ const overview = [
     label: 'About',
     title: 'How I got here.',
     description:
-      'B.Sc. in computer science, an MCA in progress, and full-stack projects running alongside both.',
+      'A computer science graduate, an MCA candidate and a developer who likes the whole build — interface, API and data.',
     href: '/about',
   },
   {
@@ -18,7 +18,7 @@ const overview = [
     label: 'Projects',
     title: `${projects.length} shipped projects.`,
     description:
-      'Ordering flows, admin dashboards, a photography portfolio and two business sites — all live, all documented.',
+      'Ordering flows, an admin-backed storefront, a photography portfolio and two business sites. All live, all documented.',
     href: '/projects',
   },
   {
@@ -26,7 +26,7 @@ const overview = [
     label: 'Skills',
     title: 'From interface to deployment.',
     description:
-      'React, Next.js, Node.js, Express, MongoDB and the styling and tooling around them.',
+      'The stack I actually ship with: React, Next.js, Node.js, Express, MongoDB, and the styling and motion around them.',
     href: '/skills',
   },
   {
@@ -34,7 +34,7 @@ const overview = [
     label: 'Contact',
     title: 'Have something to build?',
     description:
-      'Freelance projects and full-time roles. Send a short brief and I will reply with clear next steps.',
+      'Freelance projects and full-time roles. Send a short brief and I will reply within 24 hours with a clear next step.',
     href: '/contact',
   },
 ];
@@ -44,8 +44,8 @@ export const HomeOverview = () => (
     <Container>
       <SectionHeading
         size="md"
-        label="explore"
-        lines={['Where to go next.']}
+        label="index"
+        lines={['The short version.']}
       />
 
       <div className="border-t border-border">
@@ -62,7 +62,7 @@ export const HomeOverview = () => (
                 <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary">
                   {item.label}
                 </p>
-                <h3 className="mt-2 text-2xl font-medium tracking-[-0.02em] md:text-3xl">
+                <h3 className="mt-2 text-2xl font-semibold tracking-[-0.02em] md:text-3xl">
                   {item.title}
                 </h3>
               </div>

@@ -14,15 +14,15 @@ export const journey: JourneyEntry[] = [
     organization:
       'Government Model Autonomous Holkar Science College, DAVV, Indore',
     description:
-      'Completed a B.Sc. in Computer Science at Government Model Autonomous Holkar Science College, affiliated with DAVV, Indore — building strong foundations in programming, data structures and software design.',
+      'Built foundations in programming, data structures and software design — and started shipping my own web projects alongside coursework.',
   },
   {
     start: 'June 2026',
     end: 'Present',
-    title: 'Seriyans Coding School',
+    title: 'MERN Stack Training',
     organization: 'Seriyans Coding School',
     description:
-      'Joined Seriyans Coding School to turn theory into practice through industry-focused MERN stack training, real project work and code review.',
+      'Industry-focused MERN training with real project work and code review — where most of my recent builds were shaped.',
   },
   {
     start: '2026',
@@ -30,6 +30,6 @@ export const journey: JourneyEntry[] = [
     title: 'Master of Computer Applications',
     organization: 'Devi Ahilya Vishwavidyalaya (DAVV), Indore',
     description:
-      'Currently pursuing a Master of Computer Applications at Devi Ahilya Vishwavidyalaya (DAVV), Indore, deepening my knowledge of software engineering and modern web development.',
+      'Deepening my software engineering and modern web development practice while continuing to build full-stack projects.',
   },
 ];

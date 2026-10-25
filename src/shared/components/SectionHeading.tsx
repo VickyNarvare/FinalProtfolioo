@@ -1,5 +1,5 @@
 import { cn } from '../../lib/utils';
-import { Mask } from './Mask';
+import { WordReveal } from './WordReveal';
 
 const sizes = {
   sm: 'text-3xl leading-[0.95] md:text-4xl',
@@ -27,14 +27,12 @@ export const SectionHeading = ({
     </p>
     <Heading
       className={cn(
-        'mt-3 max-w-4xl font-medium tracking-[-0.02em]',
+        'mt-3 max-w-4xl font-semibold tracking-[-0.02em]',
         sizes[size]
       )}
     >
       {lines.map((line, index) => (
-        <Mask key={line} delay={index * 0.06}>
-          {line}
-        </Mask>
+        <WordReveal key={line} text={line} delay={index * 0.08} />
       ))}
     </Heading>
   </div>

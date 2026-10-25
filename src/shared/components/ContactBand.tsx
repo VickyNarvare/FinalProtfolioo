@@ -10,7 +10,7 @@ export const ContactBand = () => (
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
           Next step
         </p>
-        <h2 className="mt-3 max-w-2xl text-4xl font-medium leading-[0.95] tracking-[-0.02em] md:text-6xl">
+        <h2 className="mt-3 max-w-2xl text-4xl font-semibold leading-[0.95] tracking-[-0.02em] md:text-6xl">
           Have something that needs building?
         </h2>
         <p className="mt-4 max-w-xl leading-relaxed text-font-muted">

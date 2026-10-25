@@ -4,22 +4,22 @@ import { contact, faq } from '../data/site';
 
 const siteUrl = 'https://vicky-narvare.vercel.app';
 const defaultDescription =
-  'Vicky Narvare is a MERN stack developer in Indore building fast, responsive full-stack web applications with React, Next.js, Node.js and MongoDB.';
+  'Vicky Narvare is a full-stack MERN developer in Indore building fast, accessible web products — React and Next.js interfaces, Node.js APIs and MongoDB data layers. Explore selected work and case studies.';
 
 const pageMeta: Record<string, { title: string; description: string }> = {
   '/': {
-    title: 'Vicky Narvare — MERN Stack Developer in Indore',
+    title: 'Vicky Narvare — Full-Stack MERN Developer in Indore',
     description: defaultDescription,
   },
   '/about': {
-    title: 'About Vicky Narvare — MERN Stack Developer in Indore',
+    title: 'About Vicky Narvare — Full-Stack Developer in Indore',
     description:
-      'Meet Vicky Narvare, a MERN stack developer in Indore. Explore his background, MCA studies at DAVV, development principles and full-stack project experience.',
+      'Meet Vicky Narvare, a full-stack developer in Indore. His background, MCA studies at DAVV, working principles and the web products he has shipped.',
   },
   '/projects': {
-    title: 'Projects — MERN Stack Case Studies | Vicky Narvare',
+    title: 'Projects — Full-Stack Case Studies | Vicky Narvare',
     description:
-      'Explore full-stack case studies by Vicky Narvare, including e-commerce apps, business websites and interactive experiences built with React and Node.js.',
+      'Full-stack case studies by Vicky Narvare — a food ordering app, a coffee shop with admin, a photography portfolio and business websites built with React and Node.js.',
   },
   '/skills': {
     title: 'Skills & Tech Stack — React, Node.js & MongoDB | Vicky Narvare',
@@ -27,9 +27,9 @@ const pageMeta: Record<string, { title: string; description: string }> = {
       'The technologies Vicky Narvare uses to build full-stack products: React, Next.js, Node.js, Express.js, MongoDB, MySQL, Tailwind CSS and more.',
   },
   '/contact': {
-    title: 'Contact Vicky Narvare — Hire a MERN Stack Developer',
+    title: 'Contact Vicky Narvare — Hire a Full-Stack Developer',
     description:
-      'Contact Vicky Narvare for freelance projects, full-time roles and full-stack web development. Based in Indore, available worldwide, replies within 24 hours.',
+      'Contact Vicky Narvare for freelance projects, full-time roles and full-stack web development. Based in Indore, working remotely, replies within 24 hours.',
   },
 };
 
@@ -133,7 +133,7 @@ export const Seo = ({ pathname }: { pathname: string }) => {
         ? {
             title: `${project.name} — ${project.category} Case Study | Vicky Narvare`,
             description: truncate(
-              `${project.subtitle ?? project.description}. A ${project.category.toLowerCase()} project built with ${project.tech.join(', ')}.`
+              `${project.subtitle ?? project.description}. Built with ${project.tech.join(', ')}.`
             ),
           }
         : notFoundMeta);

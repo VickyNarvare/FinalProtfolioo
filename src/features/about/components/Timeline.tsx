@@ -19,7 +19,7 @@ export const Timeline = () => {
             <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-primary">
               Journey
             </p>
-            <h2 className="mt-3 text-5xl font-medium uppercase leading-none tracking-[-0.02em] md:text-6xl">
+            <h2 className="mt-3 text-5xl font-semibold uppercase leading-none tracking-[-0.02em] md:text-6xl">
               Timeline
             </h2>
           </div>
@@ -60,7 +60,7 @@ export const Timeline = () => {
                 <p className="wrap-break-word font-mono text-[11px] uppercase tracking-[0.14em] text-primary-dark">
                   [ {entry.start} - {entry.end} ]
                 </p>
-                <h3 className="mt-4 wrap-break-word text-2xl font-medium uppercase leading-none tracking-tight md:text-4xl">
+                <h3 className="mt-4 wrap-break-word text-2xl font-semibold uppercase leading-none tracking-tight md:text-4xl">
                   {entry.title}
                 </h3>
                 <p className="mt-3 wrap-break-word text-sm text-font-muted md:text-base">

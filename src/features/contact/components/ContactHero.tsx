@@ -3,6 +3,7 @@ import { FaGithub, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa6';
 import { FiArrowUpRight, FiMail } from 'react-icons/fi';
 import { Container } from '../../../shared/components/Container';
 import { Mask } from '../../../shared/components/Mask';
+import { Reveal } from '../../../shared/components/Reveal';
 import { contact } from '../../../shared/data/site';
 
 const details = [
@@ -11,7 +12,7 @@ const details = [
   { label: 'Response', value: 'Within 24 hours' },
   {
     label: 'Best for',
-    value: 'Full-stack apps, business websites, frontend & API work',
+    value: 'Full-stack apps, business sites, frontend & API work',
   },
 ];
 
@@ -51,18 +52,19 @@ export const ContactHero = () => (
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
             Contact
           </p>
-          <h1 className="mt-3 text-[clamp(3.5rem,14vw,10rem)] font-medium leading-[0.82] tracking-[-0.02em]">
+          <h1 className="mt-3 text-[clamp(3.5rem,14vw,10rem)] font-semibold leading-[0.82] tracking-[-0.02em]">
             <Mask>Let&apos;s talk.</Mask>
           </h1>
         </div>
         <p className="max-w-md text-lg leading-relaxed text-font-muted md:col-span-5 md:pb-3">
-          Tell me what you are building. I reply with clear next steps within 24
-          hours.
+          Tell me what you are building, what is in the way and when it needs to
+          be live. I reply within 24 hours with an honest read on scope and a
+          clear next step.
         </p>
       </div>
 
-      <div className="mt-12 grid gap-12 md:grid-cols-12 md:gap-16">
-        <div className="min-w-0 md:col-span-5">
+      <div className="mt-12 grid gap-12 md:grid-cols-12 md:gap-12 lg:gap-16">
+        <Reveal as="div" className="min-w-0 md:col-span-5">
           <dl className="border-t border-border">
             {details.map((item) => (
               <div
@@ -80,9 +82,9 @@ export const ContactHero = () => (
             I read every message myself. A short brief is enough to start the
             conversation.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="min-w-0 md:col-span-7">
+        <Reveal as="div" delay={0.08} className="min-w-0 md:col-span-7">
           <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-primary">
             Start with email
           </p>
@@ -90,7 +92,7 @@ export const ContactHero = () => (
             href={`mailto:${contact.email}`}
             className="group mt-3 flex items-baseline justify-between gap-4 border-b border-border pb-5"
           >
-            <span className="min-w-0 text-lg font-medium tracking-tight transition-colors [overflow-wrap:anywhere] group-hover:text-primary sm:text-2xl md:text-3xl">
+            <span className="min-w-0 text-[clamp(1rem,4.6vw,1.125rem)] font-semibold tracking-tight transition-colors [overflow-wrap:anywhere] group-hover:text-primary sm:text-2xl lg:text-3xl">
               {contact.email}
             </span>
             <FiArrowUpRight
@@ -142,7 +144,7 @@ export const ContactHero = () => (
             <FiMail aria-hidden="true" size={14} />
             Email me directly
           </a>
-        </div>
+        </Reveal>
       </div>
     </Container>
   </section>

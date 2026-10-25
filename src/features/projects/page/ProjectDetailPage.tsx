@@ -2,6 +2,7 @@ import { FiArrowUpRight } from 'react-icons/fi';
 import { Link, useParams } from 'react-router';
 import { Button } from '../../../shared/components/Button';
 import { Container } from '../../../shared/components/Container';
+import { Reveal } from '../../../shared/components/Reveal';
 import { contact } from '../../../shared/data/site';
 import { ProjectPreview } from '../components/ProjectPreview';
 import { projects } from '../data/projects';
@@ -17,7 +18,7 @@ export const ProjectDetailPage = () => {
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
           404
         </p>
-        <h1 className="mt-3 text-5xl font-medium tracking-[-0.02em] md:text-7xl">
+        <h1 className="mt-3 text-5xl font-semibold tracking-[-0.02em] md:text-7xl">
           Project not found.
         </h1>
         <Link
@@ -53,21 +54,21 @@ export const ProjectDetailPage = () => {
           <span aria-hidden="true">←</span> All projects
         </Link>
 
-        <header className="mt-8 grid gap-8 md:grid-cols-12 md:items-end">
+        <Reveal as="header" className="mt-8 grid gap-8 md:grid-cols-12 md:items-end" y={22}>
           <div className="md:col-span-8">
             <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-primary">
               {project.category}
             </p>
-            <h1 className="mt-3 break-words text-[clamp(2.75rem,9vw,7rem)] font-medium leading-[0.9] tracking-[-0.02em]">
+            <h1 className="mt-3 break-words text-[clamp(2.75rem,9vw,7rem)] font-semibold leading-[0.9] tracking-[-0.02em]">
               {project.name}
             </h1>
           </div>
           <p className="max-w-md text-lg leading-relaxed text-font-muted md:col-span-4 md:pb-2">
             {project.subtitle}
           </p>
-        </header>
+        </Reveal>
 
-        <div className="mt-8 flex flex-wrap gap-3">
+        <Reveal className="mt-8 flex flex-wrap gap-3" delay={0.06} y={16}>
           {liveLink && (
             <Button href={liveLink} variant="solid">
               Visit live site
@@ -81,13 +82,17 @@ export const ProjectDetailPage = () => {
               Ask about this project
             </Button>
           )}
-        </div>
+        </Reveal>
 
-        <figure className="mt-10 md:mt-14">
+        <Reveal as="figure" className="mt-10 md:mt-14" y={24}>
           <ProjectPreview project={project} priority />
-        </figure>
+        </Reveal>
 
-        <dl className="mt-10 grid gap-6 border-y border-border py-6 sm:grid-cols-3 md:mt-12">
+        <Reveal
+          as="dl"
+          className="mt-10 grid gap-6 border-y border-border py-6 sm:grid-cols-3 md:mt-12"
+          y={20}
+        >
           <div>
             <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-font-light">
               Role
@@ -111,14 +116,18 @@ export const ProjectDetailPage = () => {
               {status}
             </dd>
           </div>
-        </dl>
+        </Reveal>
 
         {(project.problem || project.solution) && (
-          <section className="mt-16 md:mt-20" aria-labelledby="brief-heading">
+          <Reveal
+            as="section"
+            className="mt-16 md:mt-20"
+            aria-labelledby="brief-heading"
+          >
             <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-b border-border pb-4">
               <h2
                 id="brief-heading"
-                className="text-2xl font-medium tracking-tight md:text-3xl"
+                className="text-2xl font-semibold tracking-tight md:text-3xl"
               >
                 The brief
               </h2>
@@ -137,7 +146,7 @@ export const ProjectDetailPage = () => {
                     01
                   </span>
                   <div>
-                    <h3 className="text-lg font-medium tracking-tight md:text-xl">
+                    <h3 className="text-lg font-semibold tracking-tight md:text-xl">
                       The challenge
                     </h3>
                     <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-font-light">
@@ -145,7 +154,7 @@ export const ProjectDetailPage = () => {
                     </p>
                   </div>
                 </div>
-                <p className="text-xl font-medium leading-snug tracking-tight md:col-span-8 md:text-2xl">
+                <p className="text-xl font-semibold leading-snug tracking-tight md:col-span-8 md:text-2xl">
                   {project.problem}
                 </p>
               </li>
@@ -159,7 +168,7 @@ export const ProjectDetailPage = () => {
                     02
                   </span>
                   <div>
-                    <h3 className="text-lg font-medium tracking-tight md:text-xl">
+                    <h3 className="text-lg font-semibold tracking-tight md:text-xl">
                       The approach
                     </h3>
                     <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-font-light">
@@ -172,15 +181,19 @@ export const ProjectDetailPage = () => {
                 </p>
               </li>
             </ol>
-          </section>
+          </Reveal>
         )}
 
         {project.challenges && project.challenges.length > 0 && (
-          <section className="mt-16 md:mt-20" aria-labelledby="build-notes-heading">
+          <Reveal
+            as="section"
+            className="mt-16 md:mt-20"
+            aria-labelledby="build-notes-heading"
+          >
             <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-b border-border pb-4">
               <h2
                 id="build-notes-heading"
-                className="text-2xl font-medium tracking-tight md:text-3xl"
+                className="text-2xl font-semibold tracking-tight md:text-3xl"
               >
                 Build notes
               </h2>
@@ -208,7 +221,7 @@ export const ProjectDetailPage = () => {
                         Problem
                       </h3>
                     </div>
-                    <p className="mt-4 font-medium leading-snug tracking-tight md:text-lg">
+                    <p className="mt-4 font-semibold leading-snug tracking-tight md:text-lg">
                       {challenge.problem}
                     </p>
                   </div>
@@ -224,13 +237,13 @@ export const ProjectDetailPage = () => {
                 </li>
               ))}
             </ol>
-          </section>
+          </Reveal>
         )}
 
         {project.features && project.features.length > 0 && (
-          <section className="mt-16 md:mt-20">
+          <Reveal as="section" className="mt-16 md:mt-20">
             <div className="flex items-baseline justify-between gap-4 border-b border-border pb-4">
-              <h2 className="text-2xl font-medium tracking-tight md:text-3xl">
+              <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
                 What it does
               </h2>
               <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-font-light">
@@ -250,36 +263,42 @@ export const ProjectDetailPage = () => {
                 </li>
               ))}
             </ul>
-          </section>
+          </Reveal>
         )}
 
-        <section className="mt-16 border-l-2 border-primary pl-6 md:mt-20 md:pl-8">
+        <Reveal
+          as="section"
+          className="mt-16 border-l-2 border-primary pl-6 md:mt-20 md:pl-8"
+          y={20}
+        >
           <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-primary">
             What I took away
           </p>
           <p className="mt-3 max-w-3xl text-2xl leading-snug tracking-tight md:text-3xl">
             {project.learned}
           </p>
-        </section>
+        </Reveal>
 
-        <Link
-          to={`/projects/${next.slug}`}
-          className="group mt-20 block border-t border-border py-8"
-        >
-          <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-font-light">
-            Next case study
-          </span>
-          <span className="mt-2 flex items-center justify-between gap-6">
-            <span className="text-4xl font-medium tracking-[-0.02em] transition-colors group-hover:text-primary md:text-6xl">
-              {next.name}
+        <Reveal y={20}>
+          <Link
+            to={`/projects/${next.slug}`}
+            className="group mt-20 block border-t border-border py-8"
+          >
+            <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-font-light">
+              Next case study
             </span>
-            <FiArrowUpRight
-              aria-hidden="true"
-              className="shrink-0 text-font-light transition-[transform,color] duration-200 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary"
-              size={28}
-            />
-          </span>
-        </Link>
+            <span className="mt-2 flex items-center justify-between gap-6">
+              <span className="text-4xl font-semibold tracking-[-0.02em] transition-colors group-hover:text-primary md:text-6xl">
+                {next.name}
+              </span>
+              <FiArrowUpRight
+                aria-hidden="true"
+                className="shrink-0 text-font-light transition-[transform,color] duration-200 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary"
+                size={28}
+              />
+            </span>
+          </Link>
+        </Reveal>
       </article>
     </Container>
   );

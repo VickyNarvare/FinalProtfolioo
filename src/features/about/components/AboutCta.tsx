@@ -11,13 +11,13 @@ export const AboutCta = () => (
         </p>
         <div className="mt-5 grid gap-8 md:grid-cols-12 md:items-end">
           <div className="md:col-span-8">
-            <h2 className="max-w-2xl text-4xl font-medium leading-[0.9] tracking-[-0.02em] md:text-6xl">
+            <h2 className="max-w-2xl text-4xl font-semibold leading-[0.9] tracking-[-0.02em] md:text-6xl">
               Let&apos;s build something useful.
             </h2>
             <p className="mt-4 max-w-xl leading-relaxed text-font-muted">
               Have a product in mind, an existing site that needs work, or a
-              role to fill? Send a short brief and I&apos;ll reply with clear
-              next steps.
+              role to fill? Send a short brief and I&apos;ll come back with
+              scope, timeline and the next step.
             </p>
           </div>
           <div className="flex flex-wrap gap-3 md:col-span-4 md:justify-end">

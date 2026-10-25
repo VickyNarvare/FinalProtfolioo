@@ -11,7 +11,7 @@ export const contact = {
 export const capabilities: Item[] = [
   {
     title: 'Full-Stack Product Development',
-    desc: 'Complete MERN applications, from the interface and API to the database and deployment.',
+    desc: 'Complete MERN applications — interface, API, database and deployment — built as one coherent product.',
     detail:
       'MongoDB, Express.js, React and Node.js working as one system, including e-commerce flows, admin dashboards and secure authentication.',
   },
@@ -29,13 +29,13 @@ export const capabilities: Item[] = [
   },
   {
     title: 'Motion & Interactive Design',
-    desc: 'Purposeful GSAP and Framer Motion animation that guides attention instead of getting in the way.',
+    desc: 'Motion that supports the story instead of competing with it — scroll-driven sequences and small interactions with a purpose.',
     detail:
-      'Scroll-driven storytelling and hover micro-interactions, as in ElectraX, tuned for clarity and performance.',
+      'Scroll-driven storytelling and hover micro-interactions, tuned for clarity and performance.',
   },
   {
     title: 'Databases & Authentication',
-    desc: 'Reliable data models and secure sign-in flows for applications that need to grow.',
+    desc: 'Data models and sign-in flows designed for real users, real edge cases and growth.',
     detail:
       'Mongoose schema design, relational modelling in MySQL and token-based authentication built for real users.',
   },
@@ -50,32 +50,32 @@ export const capabilities: Item[] = [
 export const services: Item[] = [
   {
     title: 'MERN Stack Development',
-    desc: 'Complete web applications — frontend, backend, database and deployment — built as one maintainable product.',
+    desc: 'A complete product — interface, API, database and deployment — built as one maintainable system, not four disconnected pieces.',
     tech: ['MongoDB', 'Express.js', 'React', 'Node.js'],
   },
   {
     title: 'Frontend Development',
-    desc: 'Responsive React and Next.js interfaces with reusable components, clean state and accessible interactions.',
+    desc: 'React and Next.js interfaces that feel fast, read clearly and hold up on a mid-range phone.',
     tech: ['React', 'Next.js', 'Tailwind CSS'],
   },
   {
     title: 'Backend & API Development',
-    desc: 'REST APIs with authentication, validation and database integration, built to support real traffic.',
+    desc: 'REST APIs with authentication and validation, structured so the next feature is easy to add.',
     tech: ['Node.js', 'Express.js', 'JWT'],
   },
   {
     title: 'Website Development',
-    desc: 'Business, portfolio and e-commerce websites designed, built and deployed from scratch.',
+    desc: 'Business, portfolio and e-commerce sites taken from idea to launch — designed, built and deployed.',
     tech: ['HTML5', 'CSS3', 'JavaScript'],
   },
   {
     title: 'Interactive Web Experiences',
-    desc: 'Scroll-driven storytelling and motion that make a product feel alive without slowing it down.',
+    desc: 'Scroll-driven storytelling and motion that support the content instead of slowing it down.',
     tech: ['GSAP', 'Framer Motion'],
   },
   {
     title: 'Website Maintenance & Improvements',
-    desc: 'Bug fixes, performance audits, new features and upgrades for existing codebases.',
+    desc: 'Audits, fixes and new features for existing codebases, with clear notes on what changed and why.',
     tech: ['Git', 'React', 'Node.js'],
   },
 ];
@@ -83,7 +83,7 @@ export const services: Item[] = [
 export const faq: Item[] = [
   {
     title: 'What kind of developer are you?',
-    desc: "I'm a full-stack MERN developer based in Indore with 1+ years of hands-on experience building and shipping live web applications.",
+    desc: "I'm a full-stack MERN developer based in Indore. I build complete products — React interfaces, Node APIs and the data layer — with 1+ years of hands-on project experience.",
   },
   {
     title: 'What technologies do you work with?',
@@ -95,7 +95,7 @@ export const faq: Item[] = [
   },
   {
     title: 'Can you build a website from scratch?',
-    desc: 'Yes. I handle the full process: planning, interface design, backend, database, testing and deployment.',
+    desc: 'Yes. I handle the whole build: scope, interface, backend, database, testing and deployment.',
   },
   {
     title: 'Can you work on an existing project?',
@@ -103,11 +103,19 @@ export const faq: Item[] = [
   },
   {
     title: 'How can I hire you?',
-    desc: "Email or WhatsApp me with a short brief. I take on freelance projects and full-time roles, and I'll reply with clear next steps.",
+    desc: "Email or WhatsApp me with a short brief. I take on freelance projects and full-time roles, and I'll reply with a clear next step.",
+  },
+  {
+    title: 'What do you need from me to start?',
+    desc: 'A short brief: the goal, who it is for, any existing brand or code, and your deadline. If something is missing, I will ask before quoting.',
+  },
+  {
+    title: 'How do we stay in touch during a project?',
+    desc: 'Email or WhatsApp for day-to-day questions, with a short progress note at each milestone. You will always know what is done and what is next.',
   },
   {
     title: 'How long does a project take?',
-    desc: "Timelines depend on scope. A landing page may take days; a full-stack application takes weeks. Share your requirements and I'll send a clear estimate.",
+    desc: "Scope sets the timeline. A landing page can take days; a full-stack application usually takes weeks. Once the scope is agreed, I'll send a clear estimate.",
   },
   {
     title: 'Do you work with clients remotely?',
@@ -119,6 +127,6 @@ export const faq: Item[] = [
   },
   {
     title: 'What happens after launch?',
-    desc: 'I offer post-launch support for fixes, updates and improvements, so your site keeps working as your needs change.',
+    desc: 'I stay involved. Post-launch support covers fixes, updates and improvements, so the site keeps working as your needs change.',
   },
 ];

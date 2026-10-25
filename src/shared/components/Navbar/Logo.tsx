@@ -3,7 +3,7 @@ const Logo = () => {
   return (
     <Link
       to="/"
-      className="group flex cursor-pointer items-center gap-3"
+      className="group flex shrink-0 cursor-pointer items-center gap-3"
       aria-label="Vicky Narvare - Home"
     >
       <div className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-background-card shadow-sm transition-all duration-300 group-hover:border-primary group-hover:bg-background-secondary">
@@ -16,7 +16,7 @@ const Logo = () => {
         />
       </div>
 
-      <div className="hidden sm:block">
+      <div className="hidden whitespace-nowrap sm:block">
         <p className="text-[0.95rem] font-bold leading-none tracking-tight text-font">
           Vicky Narvare
         </p>

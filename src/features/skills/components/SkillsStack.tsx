@@ -29,6 +29,7 @@ import {
 import { VscVscode } from 'react-icons/vsc';
 import { Container } from '../../../shared/components/Container';
 import { Mask } from '../../../shared/components/Mask';
+import { Reveal } from '../../../shared/components/Reveal';
 import { skills } from '../data/skills';
 
 const skillIcons: Record<string, IconType> = {
@@ -58,12 +59,12 @@ const skillIcons: Record<string, IconType> = {
 };
 
 const groupNotes: Record<string, string> = {
-  Frontend: 'Interfaces, component systems and client-side state.',
-  Backend: 'APIs, authentication and server logic built to stay maintainable.',
+  Frontend: 'Interfaces, component systems and client-side state that stay predictable as the app grows.',
+  Backend: 'APIs, authentication and server logic structured to be extended, not rewritten.',
   Database: 'Schemas, queries and data models that keep the product honest.',
   Styling: 'Responsive systems in Tailwind, SCSS and hand-written CSS.',
-  Motion: 'Scroll-driven stories and interaction with a purpose.',
-  Tools: 'Version control, editor and deployment workflows I use daily.',
+  Motion: 'Scroll-driven stories and interactions that earn their place.',
+  Tools: 'Version control, editor and deployment workflows I use every day.',
 };
 
 const groups = Object.entries(skills);
@@ -77,7 +78,7 @@ export const SkillsStack = () => (
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
             Skills
           </p>
-          <h1 className="mt-3 max-w-3xl text-5xl font-medium leading-[0.9] tracking-[-0.02em] md:text-7xl">
+          <h1 className="mt-3 max-w-3xl text-5xl font-semibold leading-[0.9] tracking-[-0.02em] md:text-7xl">
             <Mask>Tools I build with.</Mask>
           </h1>
         </div>
@@ -87,8 +88,8 @@ export const SkillsStack = () => (
         </p>
       </div>
 
-      <div className="mt-12 grid gap-12 md:grid-cols-12 md:gap-16">
-        <aside className="md:col-span-4">
+      <div className="mt-12 grid gap-12 md:grid-cols-12 md:gap-12 lg:gap-16">
+        <Reveal as="aside" className="md:col-span-4" y={24}>
           <div className="lg:sticky lg:top-28">
             <dl className="border-t border-border">
               <div className="flex items-baseline justify-between gap-4 border-b border-border py-3">
@@ -126,19 +127,22 @@ export const SkillsStack = () => (
               <span aria-hidden="true">→</span>
             </Link>
           </div>
-        </aside>
+        </Reveal>
 
         <div className="md:col-span-8">
           {groups.map(([group, items], index) => (
-            <section
+            <Reveal
+              as="section"
               key={group}
+              delay={Math.min(index * 0.04, 0.16)}
+              y={20}
               className="border-t border-border py-7 first:border-t-0 first:pt-0"
             >
               <div className="flex items-baseline gap-4">
                 <span className="font-mono text-[10px] text-font-light">
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <h2 className="text-2xl font-medium tracking-tight md:text-3xl">
+                <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
                   {group}
                 </h2>
                 <span
@@ -177,7 +181,7 @@ export const SkillsStack = () => (
                   );
                 })}
               </ul>
-            </section>
+            </Reveal>
           ))}
         </div>
       </div>

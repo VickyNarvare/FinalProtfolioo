@@ -50,7 +50,7 @@ export const Principles = () => (
               </span>
               <span className="h-px flex-1 bg-border" aria-hidden="true" />
             </div>
-            <h3 className="mt-6 text-2xl font-medium tracking-[-0.02em] md:text-3xl">
+            <h3 className="mt-6 text-2xl font-semibold tracking-[-0.02em] md:text-3xl">
               {principle.title}
             </h3>
             <p className="mt-3 max-w-xl leading-relaxed text-font-muted">

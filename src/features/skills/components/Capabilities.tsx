@@ -1,5 +1,6 @@
 import { Accordion } from '../../../shared/components/Accordion';
 import { Container } from '../../../shared/components/Container';
+import { Reveal } from '../../../shared/components/Reveal';
 import { SectionHeading } from '../../../shared/components/SectionHeading';
 import { capabilities } from '../../../shared/data/site';
 
@@ -14,7 +15,9 @@ export const Capabilities = () => (
         lines={['The work I take on.']}
         className="mb-8 md:mb-10"
       />
-      <Accordion items={capabilities} numbered />
+      <Reveal y={20}>
+        <Accordion items={capabilities} numbered />
+      </Reveal>
     </Container>
   </section>
 );

@@ -9,7 +9,7 @@ export const Services = () => (
       <SectionHeading
         size="lg"
         label="services"
-        lines={['Services built around your goals.']}
+        lines={['Ways I can help.']}
       />
       <div className="border-t border-border">
         {services.map((s, i) => (
@@ -22,7 +22,7 @@ export const Services = () => (
             <span className="font-mono text-xs text-font-light md:col-span-1">
               {String(i + 1).padStart(2, '0')}
             </span>
-            <h3 className="text-3xl font-medium tracking-[-0.02em] transition-transform duration-300 group-hover:translate-x-1 md:col-span-5">
+            <h3 className="text-3xl font-semibold tracking-[-0.02em] transition-transform duration-300 group-hover:translate-x-1 md:col-span-5">
               {s.title}
             </h3>
             <p className="text-font-muted md:col-span-3">{s.desc}</p>

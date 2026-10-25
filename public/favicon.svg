@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Vicky Narvare">
-  <rect width="64" height="64" rx="16" fill="#18121f" />
+  <rect width="64" height="64" rx="16" fill="#0b342a" />
   <text
     x="31"
     y="43"
@@ -8,9 +8,9 @@
     font-weight="800"
     letter-spacing="-2"
     text-anchor="middle"
-    fill="#f5efff"
+    fill="#f3eee1"
   >
-    V<tspan fill="#a855f7">N</tspan>
+    V<tspan fill="#dcd3bc">N</tspan>
   </text>
-  <circle cx="46" cy="46" r="3" fill="#a855f7" />
+  <circle cx="46" cy="46" r="3" fill="#dcd3bc" />
 </svg>

@@ -31,15 +31,14 @@ const itemVariants = {
 const MobileMenu = ({ open, onClose, triggerRef }: MobileMenuProps) => {
   const { pathname } = useLocation();
   const panelRef = useRef<HTMLElement>(null);
-  const isFirstRender = useRef(true);
+  const previousPathname = useRef(pathname);
 
-  // Close when the route changes, but not on the initial mount.
+  // Close when the route actually changes — not on mount or StrictMode's
+  // double-invoked effects.
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
+    if (previousPathname.current === pathname) return;
 
+    previousPathname.current = pathname;
     onClose();
   }, [pathname, onClose]);
 
@@ -60,12 +59,18 @@ const MobileMenu = ({ open, onClose, triggerRef }: MobileMenuProps) => {
   useEffect(() => {
     if (!open) return;
 
-    const getFocusable = () =>
-      Array.from(
+    const getFocusable = () => {
+      const panelItems = Array.from(
         panelRef.current?.querySelectorAll<HTMLElement>(
           'a[href], button:not([disabled])'
         ) ?? []
       );
+      const trigger = triggerRef.current;
+
+      // Include the header close button so keyboard users can reach it too.
+      // It sits before the panel in the DOM, so it leads the trap order.
+      return trigger ? [trigger, ...panelItems] : panelItems;
+    };
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -93,12 +98,25 @@ const MobileMenu = ({ open, onClose, triggerRef }: MobileMenuProps) => {
     };
 
     const originalOverflow = document.body.style.overflow;
+    const main = document.getElementById('main');
+    const footer = document.querySelector('footer');
+    const mainWasInert = main?.inert ?? false;
+    const footerWasInert = footer?.inert ?? false;
+
     document.body.style.overflow = 'hidden';
+    if (main) main.inert = true;
+    if (footer) footer.inert = true;
     window.addEventListener('keydown', handleKeyDown);
-    getFocusable()[0]?.focus({ preventScroll: true });
+    const focusable = getFocusable();
+    const initialFocus = focusable.find(
+      (element) => element !== triggerRef.current
+    );
+    (initialFocus ?? focusable[0])?.focus({ preventScroll: true });
 
     return () => {
       document.body.style.overflow = originalOverflow;
+      if (main) main.inert = mainWasInert;
+      if (footer) footer.inert = footerWasInert;
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [open, onClose, triggerRef]);
@@ -114,7 +132,7 @@ const MobileMenu = ({ open, onClose, triggerRef }: MobileMenuProps) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-x-0 bottom-0 top-16 z-40 flex flex-col overflow-y-auto overscroll-contain bg-background text-font lg:hidden"
+          className="fixed inset-x-0 top-16 z-40 flex h-[calc(100dvh-4rem)] flex-col overflow-y-auto overscroll-contain bg-background text-font lg:hidden"
         >
           <div className="mx-auto flex min-h-full w-full max-w-350 flex-col px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-6 md:px-10 md:pt-10">
             <div className="flex items-end justify-between gap-4 border-b border-border pb-4">
@@ -166,7 +184,11 @@ const MobileMenu = ({ open, onClose, triggerRef }: MobileMenuProps) => {
 
                       <span className="flex shrink-0 items-center gap-2">
                         {isActive && (
-                          <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-primary">
+                          <span className="flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-primary">
+                            <span
+                              className="size-1.5 bg-primary"
+                              aria-hidden="true"
+                            />
                             Current
                           </span>
                         )}

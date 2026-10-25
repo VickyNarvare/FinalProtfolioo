@@ -1,4 +1,10 @@
-import { AnimatePresence, motion, useScroll, useSpring } from 'motion/react';
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+} from 'motion/react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { FaGithub } from 'react-icons/fa6';
 import { FiArrowUpRight } from 'react-icons/fi';
@@ -11,11 +17,20 @@ import MobileMenu from './MobileMenu';
 import NavLinks from './NavLinks';
 import ThemeToggle from './ThemeToggle';
 
+const HIDE_AFTER = 96;
+const DIRECTION_THRESHOLD = 6;
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(() => window.scrollY > 24);
-  const [mobileOpen, setMobileOpen] = useState(true);
-  const closeMenu = useCallback(() => setMobileOpen(false), []);
+  const [hidden, setHidden] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const closeMenu = useCallback(() => {
+    setMobileOpen(false);
+    setHidden(false);
+  }, []);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const lastScrollY = useRef(0);
+  const reduceMotion = useReducedMotion();
 
   // Thin reading progress line along the bottom of the bar.
   const { scrollYProgress } = useScroll();
@@ -26,14 +41,35 @@ const Navbar = () => {
   });
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 24);
+    const handleScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+
+      if (mobileOpen || y < HIDE_AFTER) {
+        setHidden(false);
+      } else {
+        const delta = y - lastScrollY.current;
+        if (delta > DIRECTION_THRESHOLD) setHidden(true);
+        else if (delta < -DIRECTION_THRESHOLD) setHidden(false);
+      }
+
+      lastScrollY.current = y;
+    };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [mobileOpen]);
+
+  const hideBar = hidden && !mobileOpen && !reduceMotion;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <motion.header
+      initial={false}
+      animate={{ y: hideBar ? '-100%' : 0 }}
+      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+      onFocusCapture={() => setHidden(false)}
+      className="fixed inset-x-0 top-0 z-50"
+    >
       <div
         className={`relative border-b transition-[background-color,border-color] duration-300 ${
           mobileOpen
@@ -47,7 +83,7 @@ const Navbar = () => {
           {/* Left */}
           <div className="flex min-w-0 items-center gap-3 lg:gap-5">
             <Logo />
-            <div className="hidden h-5 w-px bg-border lg:block" />
+            <div className="hidden h-5 w-px bg-border xl:block" />
             <NavLinks />
           </div>
 
@@ -80,7 +116,10 @@ const Navbar = () => {
 
             <button
               ref={menuButtonRef}
-              onClick={() => setMobileOpen((previous) => !previous)}
+              onClick={() => {
+                setMobileOpen((previous) => !previous);
+                setHidden(false);
+              }}
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
@@ -121,7 +160,7 @@ const Navbar = () => {
           triggerRef={menuButtonRef}
         />
       </div>
-    </header>
+    </motion.header>
   );
 };
 

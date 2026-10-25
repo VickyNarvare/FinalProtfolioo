@@ -32,7 +32,7 @@ export const Accordion = ({
                   {String(index + 1).padStart(2, '0')}
                 </span>
               )}
-              <span className="flex-1 text-2xl font-medium tracking-tight transition-colors group-hover:text-primary md:text-3xl">
+              <span className="flex-1 font-heading text-2xl font-medium tracking-tight transition-colors group-hover:text-primary md:text-3xl">
                 {item.title}
               </span>
               <span
@@ -53,7 +53,12 @@ export const Accordion = ({
               )}
             >
               <div className="overflow-hidden">
-                <div className="max-w-xl space-y-3 pb-6 text-font-muted md:pl-10">
+                <div
+                  className={cn(
+                    'max-w-xl space-y-3 pb-6 text-font-muted',
+                    numbered && 'md:pl-10'
+                  )}
+                >
                   <p>{item.desc}</p>
                   {item.detail && (
                     <p className="font-mono text-[11px] leading-relaxed text-font">

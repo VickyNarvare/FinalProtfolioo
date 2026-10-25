@@ -1,4 +1,4 @@
-export interface ProjectChallenge {
+interface ProjectChallenge {
   problem: string;
   solution: string;
 }

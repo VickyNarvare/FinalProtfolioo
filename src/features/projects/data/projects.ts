@@ -13,7 +13,7 @@ export const projects: Project[] = [
     subtitle:
       'A full-stack food ordering experience with cart, checkout and live order tracking',
     description:
-      'Foodie Delight is a complete food ordering platform where customers browse a category-filtered menu, build a cart, apply promo codes and follow their order through a four-stage tracking timeline. The project focuses on the details that make e-commerce feel trustworthy: clear pricing, validated forms, persistent state and a checkout that works on any screen size.',
+      'Foodie Delight is a full food ordering platform: customers browse a category-filtered menu, build a cart, apply promo codes and follow their order through a four-stage tracking timeline. The work centred on the details that make e-commerce feel trustworthy — clear pricing, validated forms, state that survives a refresh and a checkout that works on any screen.',
     problem:
       'Most food ordering demos stop at a menu and a cart. The challenge here was to build the full purchase journey — and keep it intact when a customer refreshes the page or switches device.',
     solution:
@@ -69,7 +69,7 @@ export const projects: Project[] = [
     subtitle:
       'A coffee shop storefront with a customer ordering flow and admin dashboard',
     description:
-      'Coffee Cup pairs a polished storefront with a practical admin panel. Customers browse the catalogue, add items to a cart and place orders, while the shop side provides a dashboard for reviewing and managing those orders. It is a compact example of a two-sided application built with React.',
+      'Coffee Cup pairs a polished storefront with a practical admin panel. Customers browse the catalogue, add items to a cart and place orders, while the shop side provides a dashboard for reviewing and managing those orders. A compact two-sided application built with React.',
     problem:
       'A shop needs more than an attractive menu. This project required one codebase to serve two very different audiences — customers placing orders and staff managing them.',
     solution:

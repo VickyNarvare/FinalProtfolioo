@@ -1,4 +1,5 @@
 import { Container } from '../../../shared/components/Container';
+import { Reveal } from '../../../shared/components/Reveal';
 import { SectionHeading } from '../../../shared/components/SectionHeading';
 
 const steps = [
@@ -31,18 +32,22 @@ export const HowItWorks = () => (
         lines={['What happens next.']}
       />
       <div className="grid gap-10 md:grid-cols-3">
-        {steps.map((step) => (
-          <div key={step.number} className="border-t border-border pt-6">
+        {steps.map((step, index) => (
+          <Reveal
+            key={step.number}
+            delay={index * 0.08}
+            className="border-t border-border pt-6"
+          >
             <span className="font-mono text-xs text-font-light">
               {step.number}
             </span>
-            <h3 className="mt-6 text-2xl font-medium tracking-[-0.02em]">
+            <h3 className="mt-6 text-2xl font-semibold tracking-[-0.02em]">
               {step.title}
             </h3>
             <p className="mt-3 max-w-sm leading-relaxed text-font-muted">
               {step.description}
             </p>
-          </div>
+          </Reveal>
         ))}
       </div>
     </Container>

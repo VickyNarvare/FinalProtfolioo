@@ -1,4 +1,5 @@
 import { Container } from '../../../shared/components/Container';
+import { Reveal } from '../../../shared/components/Reveal';
 import { SectionHeading } from '../../../shared/components/SectionHeading';
 import { ProjectGrid } from '../components/ProjectGrid';
 import { projects } from '../data/projects';
@@ -13,7 +14,7 @@ export const ProjectsPage = () => (
         lines={['Case studies, not just screenshots.']}
       />
 
-      <div className="mb-12 grid gap-6 border-t border-border pt-6 md:grid-cols-12">
+      <Reveal className="mb-12 grid gap-6 border-t border-border pt-6 md:grid-cols-12" y={18}>
         <p className="max-w-2xl leading-relaxed text-font-muted md:col-span-7">
           Each build starts with a problem worth solving. Below are the
           decisions, the trade-offs and the working product — not just the
@@ -22,7 +23,7 @@ export const ProjectsPage = () => (
         <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-font-light md:col-span-5 md:text-right">
           {projects.length} projects · live builds and source
         </p>
-      </div>
+      </Reveal>
 
       <ProjectGrid />
     </Container>

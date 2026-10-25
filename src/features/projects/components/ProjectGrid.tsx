@@ -9,9 +9,11 @@ export const ProjectGrid = ({ limit }: { limit?: number }) => {
   return (
     <div>
       {visible.map((p, i) => (
-        <Reveal key={p.slug} delay={Math.min(i * 0.06, 0.24)} y={32}>
-          <ProjectCard project={p} index={i} />
-        </Reveal>
+        <div key={p.slug} className="lg:sticky lg:top-20 lg:bg-background">
+          <Reveal delay={Math.min(i * 0.06, 0.24)} y={32}>
+            <ProjectCard project={p} index={i} />
+          </Reveal>
+        </div>
       ))}
     </div>
   );

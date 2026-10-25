@@ -6,7 +6,7 @@ export const NotFound = () => (
     <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">
       Error 404
     </p>
-    <h1 className="mt-4 text-[20vw] font-medium leading-[0.8] tracking-[-0.02em] md:text-[11vw]">
+    <h1 className="mt-4 text-[20vw] font-semibold leading-[0.8] tracking-[-0.02em] md:text-[11vw]">
       Lost?
     </h1>
     <p className="mt-4 max-w-md text-lg text-font-muted">
