@@ -1,4 +1,4 @@
-export interface JourneyEntry {
+interface JourneyEntry {
   start: string;
   end: string;
   title: string;
@@ -14,7 +14,7 @@ export const journey: JourneyEntry[] = [
     organization:
       'Government Model Autonomous Holkar Science College, DAVV, Indore',
     description:
-      'Completed B.Sc. in Computer Science from Government Model Autonomous Holkar Science College, affiliated with DAVV, Indore.',
+      'Completed a B.Sc. in Computer Science at Government Model Autonomous Holkar Science College, affiliated with DAVV, Indore — building strong foundations in programming, data structures and software design.',
   },
   {
     start: 'June 2026',
@@ -22,7 +22,7 @@ export const journey: JourneyEntry[] = [
     title: 'Seriyans Coding School',
     organization: 'Seriyans Coding School',
     description:
-      'Joined Seriyans Coding School to gain practical skills and industry-focused experience in MERN stack development.',
+      'Joined Seriyans Coding School to turn theory into practice through industry-focused MERN stack training, real project work and code review.',
   },
   {
     start: '2026',
@@ -30,6 +30,6 @@ export const journey: JourneyEntry[] = [
     title: 'Master of Computer Applications',
     organization: 'Devi Ahilya Vishwavidyalaya (DAVV), Indore',
     description:
-      'Currently pursuing Master of Computer Applications (MCA) from Devi Ahilya Vishwavidyalaya (DAVV), Indore.',
+      'Currently pursuing a Master of Computer Applications at Devi Ahilya Vishwavidyalaya (DAVV), Indore, deepening my knowledge of software engineering and modern web development.',
   },
 ];

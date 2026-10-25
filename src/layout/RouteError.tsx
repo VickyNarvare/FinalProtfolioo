@@ -20,22 +20,22 @@ export const RouteError = () => {
         Something broke.
       </h1>
       <p className="mt-4 max-w-lg text-lg text-font-muted">
-        The page could not load. This is usually a stale build or a network
-        hiccup. Reloading normally fixes it.
+        The page couldn&apos;t load. This is usually a stale build or a brief
+        network issue — reloading normally fixes it.
       </p>
       {import.meta.env.DEV && (
-        <p className="mt-4 max-w-lg break-words font-mono text-xs text-font-light">
+        <p className="mt-4 max-w-lg wrap-break-words font-mono text-xs text-font-light">
           {message}
         </p>
       )}
       <div className="mt-8 flex flex-wrap gap-3">
-        <Button href="/" variant="solid" magnetic>
-          Back home
+        <Button href="/" variant="solid">
+          Back to home
         </Button>
         <button
           type="button"
           onClick={() => window.location.reload()}
-          className="inline-flex min-h-11 items-center rounded-full border border-font/30 px-6 py-3 text-sm font-semibold text-font transition-colors duration-300 hover:bg-font hover:text-background"
+          className="inline-flex min-h-11 items-center justify-center rounded-lg border border-border bg-background-card px-5 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-font shadow-sm transition-[background-color,border-color,color,box-shadow,transform] duration-300 ease-out hover:-translate-y-0.5 hover:border-primary/60 hover:bg-primary/10 hover:text-primary hover:shadow-lg hover:shadow-primary/15 active:translate-y-0"
         >
           Reload page
         </button>

@@ -10,16 +10,14 @@ export const NotFound = () => (
       Lost?
     </h1>
     <p className="mt-4 max-w-md text-lg text-font-muted">
-      The page you are looking for does not exist or has moved. Let&apos;s get
-      you back to something useful.
+      The page you&apos;re looking for doesn&apos;t exist or has moved.
+      Let&apos;s get you back to something useful.
     </p>
     <div className="mt-8 flex flex-wrap gap-3">
-      <Button href="/" variant="solid" magnetic>
-        Back home
+      <Button href="/" variant="solid">
+        Back to home
       </Button>
-      <Button href="/projects" magnetic>
-        View work
-      </Button>
+      <Button href="/projects">View projects</Button>
     </div>
   </Container>
 );

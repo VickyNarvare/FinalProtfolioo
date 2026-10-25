@@ -4,9 +4,16 @@ import { SectionHeading } from '../../../shared/components/SectionHeading';
 import { capabilities } from '../../../shared/data/site';
 
 export const Capabilities = () => (
-  <section id="capabilities" className="scroll-mt-24 py-24 md:py-32">
+  <section
+    id="capabilities"
+    className="scroll-mt-24 border-t border-border py-20 md:py-28"
+  >
     <Container>
-      <SectionHeading label="capabilities" lines={['What I do well.']} />
+      <SectionHeading
+        label="Capabilities"
+        lines={['The work I take on.']}
+        className="mb-8 md:mb-10"
+      />
       <Accordion items={capabilities} numbered />
     </Container>
   </section>

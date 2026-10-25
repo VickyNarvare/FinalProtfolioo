@@ -1,66 +1,53 @@
-import { motion, useInView } from 'motion/react';
-import { memo, useRef } from 'react';
+import { memo } from 'react';
 import { Link } from 'react-router';
 import { cn } from '../../../lib/utils';
-import { Badge } from '../../../shared/components/Badge';
 import { Button } from '../../../shared/components/Button';
 import type { Project } from '../../../types/project';
 import { ProjectPreview } from './ProjectPreview';
 
 export const ProjectCard = memo(
-  ({ project: p, index }: { project: Project; index: number }) => {
-    const ref = useRef<HTMLElement>(null);
-    const seen = useInView(ref, { once: true, amount: 0.25 });
-    return (
-      <article
-        ref={ref}
-        className="grid gap-6 border-t border-border py-12 md:grid-cols-12 md:gap-10 md:py-20"
+  ({ project: p, index }: { project: Project; index: number }) => (
+    <article className="grid gap-6 border-t border-border py-12 md:grid-cols-12 md:gap-10 md:py-16">
+      <Link
+        to={`/projects/${p.slug}`}
+        aria-label={`Open ${p.name} case study`}
+        className={cn(
+          'group block overflow-hidden md:col-span-8',
+          index % 2 === 1 && 'md:order-2'
+        )}
       >
-        <Link
-          to={`/projects/${p.slug}`}
-          aria-label={`Open ${p.name}`}
-          className={cn(
-            'group block md:col-span-8',
-            index % 2 === 1 && 'md:order-2'
-          )}
-        >
-          <motion.div
-            className="overflow-hidden"
-            initial={false}
-            animate={{
-              clipPath: seen ? 'inset(0 0 0% 0)' : 'inset(0 0 100% 0)',
-            }}
-            transition={{ duration: 1.1, ease: [0.2, 0.8, 0.2, 1] }}
+        <ProjectPreview
+          project={p}
+          priority={index === 0}
+          className="transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+        />
+      </Link>
+
+      <div className="flex flex-col md:col-span-4">
+        <p className="font-mono text-[11px] text-font-light">
+          {String(index + 1).padStart(2, '0')} / {p.category}
+        </p>
+        <h3 className="mt-4 text-4xl font-extrabold leading-none tracking-tighter md:text-5xl">
+          <Link
+            to={`/projects/${p.slug}`}
+            className="underline-offset-4 transition-colors hover:text-primary hover:underline"
           >
-            <ProjectPreview
-              project={p}
-              className="transition-transform duration-700 group-hover:scale-105"
-            />
-          </motion.div>
-        </Link>
-        <div className="flex flex-col justify-end gap-5 md:col-span-4">
-          <p className="font-mono text-xs text-font-light">
-            {String(index + 1).padStart(2, '0')} / {p.category}
-          </p>
-          <h3 className="text-5xl font-extrabold leading-none tracking-tighter md:text-6xl">
             {p.name}
-          </h3>
-          <p className="text-font-muted">{p.description}</p>
-          <ul className="flex flex-wrap gap-2">
-            {p.tech.map((t) => (
-              <li key={t}>
-                <Badge>{t}</Badge>
-              </li>
-            ))}
-          </ul>
-          <div className="flex flex-wrap gap-3">
-            <Button href={`/projects/${p.slug}`} variant="solid">
-              View Project
-            </Button>
-            {p.github && <Button href={p.github}>GitHub</Button>}
-          </div>
+          </Link>
+        </h3>
+        <p className="mt-4 max-w-md text-font-muted">
+          {p.subtitle ?? p.description}
+        </p>
+        <p className="mt-5 font-mono text-[11px] leading-relaxed text-font-light">
+          {p.tech.join(' / ')}
+        </p>
+        <div className="mt-7 flex flex-wrap gap-3">
+          <Button href={`/projects/${p.slug}`} variant="solid">
+            Read case study
+          </Button>
+          {p.live && <Button href={p.live}>Live site</Button>}
         </div>
-      </article>
-    );
-  }
+      </div>
+    </article>
+  )
 );

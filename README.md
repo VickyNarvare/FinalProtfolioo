@@ -1,17 +1,17 @@
 # Vicky Narvare — Portfolio
 
-Personal portfolio for Vicky Narvare, a MERN stack developer based in Indore, India. The site covers an introduction, selected projects with case-study pages, the tech stack, services, and contact details.
+The personal portfolio of Vicky Narvare, a MERN stack developer based in Indore, India. The site introduces his background, presents selected projects as detailed case studies, documents his tech stack and services, and makes it easy for clients and recruiters to get in touch.
 
 **Live:** [vicky-narvare.vercel.app](https://vicky-narvare.vercel.app)
 
-## Stack
+## Tech stack
 
-- **React 19** + **TypeScript**
-- **Vite 8** for the dev server and production build
-- **React Router 8** with lazy-loaded routes
+- **React 19** + **TypeScript** for a typed, component-driven UI
+- **Vite 8** for fast local development and production builds
+- **React Router 8** with lazy-loaded routes for smaller initial bundles
 - **Tailwind CSS 4** with custom design tokens in `src/index.css`
-- **Motion** for reveals, scroll progress, and micro-interactions
-- **react-icons** for the icon set
+- **Motion** for reveals, scroll progress and micro-interactions
+- **react-icons** for a consistent icon set
 
 ## Getting started
 
@@ -27,7 +27,7 @@ npm run dev
 | `npm run lint` | Run ESLint |
 | `npm run preview` | Preview the production build |
 
-## Structure
+## Project structure
 
 ```
 src/
@@ -36,7 +36,7 @@ src/
 ├── layout/         # Main layout, footer, 404 page
 ├── context/        # Theme provider and context
 ├── features/
-│   ├── home/       # Hero, intro, featured work, overview
+│   ├── home/       # Hero, featured work, overview
 │   ├── about/      # About page and journey data
 │   ├── projects/   # Project list, detail page, cards, data
 │   ├── skills/     # Skills and capabilities
@@ -50,7 +50,7 @@ src/
 
 ## Editing content
 
-Most copy is data-driven, so components rarely need touching:
+Most copy lives in data files, so components rarely need to change:
 
 - **Projects** — `src/features/projects/data/projects.ts`
 - **Skills** — `src/features/skills/data/skills.ts`
@@ -63,14 +63,22 @@ Project images live in `src/assets/images/` and are imported by the project data
 
 ## Design notes
 
-- The palette and typography tokens are defined with Tailwind's `@theme` block in `src/index.css`.
-- Dark mode is the default; the choice is persisted in `localStorage` and applied before first paint to avoid a flash.
+- The visual language is editorial rather than card-based: ruled sections, asymmetric headline sizes, mono metadata and project screenshots that keep their full 1.95:1 crop.
+- The palette and typography tokens are defined in Tailwind's `@theme` block in `src/index.css`. Purple carries links and actions; mint is reserved for section labels and availability.
+- Dark mode is the default. The user's choice is stored in `localStorage` and applied before first paint to prevent a flash.
+- There is no blocking loading screen: the page paints immediately and route changes jump to the top.
 - Animations respect `prefers-reduced-motion`.
-- The intro overlay only runs on a full page load, not on client-side navigation.
+
+## SEO
+
+- Each route sets its own title, meta description, canonical URL and Open Graph tags through `Seo.tsx`.
+- Project pages include `CreativeWork` and `BreadcrumbList` structured data; the site also exposes `Person` and `WebSite` schemas.
+- `public/sitemap.xml` and `public/robots.txt` are ready for search engines.
+- Unknown routes are marked `noindex, follow`.
 
 ## Deployment
 
-The site is a static SPA. Build it with `npm run build` and deploy the `dist/` directory to Vercel, Netlify, or any static host.
+The site is a static SPA. Build it with `npm run build` and deploy the `dist/` directory to Vercel, Netlify or any static host.
 
 Client-side routes need a fallback to `index.html`:
 

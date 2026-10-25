@@ -1,207 +1,127 @@
-import { motion } from 'motion/react';
-import { useCallback, useEffect, useState } from 'react';
+import { AnimatePresence, motion, useScroll, useSpring } from 'motion/react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { FaGithub } from 'react-icons/fa6';
+import { FiArrowUpRight } from 'react-icons/fi';
 import { HiOutlineMenu } from 'react-icons/hi';
+import { RxCross2 } from 'react-icons/rx';
 import { Link } from 'react-router';
 
-import { FaGithub } from 'react-icons/fa6';
 import Logo from './Logo';
 import MobileMenu from './MobileMenu';
 import NavLinks from './NavLinks';
 import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(() => window.scrollY > 40);
+  const [scrolled, setScrolled] = useState(() => window.scrollY > 24);
   const [mobileOpen, setMobileOpen] = useState(false);
   const closeMenu = useCallback(() => setMobileOpen(false), []);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
-  // ============================================
-  // SCROLL DETECTION
-  // ============================================
+  // Thin reading progress line along the bottom of the bar.
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 260,
+    damping: 40,
+    restDelta: 0.001,
+  });
+
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 24);
 
-    window.addEventListener('scroll', handleScroll, {
-      passive: true,
-    });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <>
-      {/* =====================================================
-          NAVBAR
-      ===================================================== */}
-      <header
-        className={`
-          fixed
-          left-0
-          right-0
-          top-0
-          z-50
-          transition-all
-          duration-500
-          ease-out
-          ${scrolled ? 'px-4 pt-4 sm:px-6' : 'px-0 pt-0'}
-        `}
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div
+        className={`relative border-b transition-[background-color,border-color] duration-300 ${
+          mobileOpen
+            ? 'border-border bg-background'
+            : scrolled
+              ? 'border-border bg-background/90'
+              : 'border-transparent bg-background/60'
+        }`}
       >
-        <motion.div
-          initial={false}
-          animate={{
-            maxWidth: scrolled ? 1280 : 1536,
-          }}
-          transition={{
-            duration: 0.7,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="mx-auto w-full"
-        >
-          {/* =================================================
-              NAVBAR CONTAINER
-          ================================================= */}
-          <motion.div
-            initial={false}
-            animate={{
-              height: scrolled ? 60 : 72,
+        <div className="mx-auto flex h-16 w-full max-w-350 items-center justify-between gap-4 px-5 md:px-10">
+          {/* Left */}
+          <div className="flex min-w-0 items-center gap-3 lg:gap-5">
+            <Logo />
+            <div className="hidden h-5 w-px bg-border lg:block" />
+            <NavLinks />
+          </div>
 
-              borderRadius: scrolled ? 18 : 0,
+          {/* Right */}
+          <div className="flex shrink-0 items-center gap-2">
+            <ThemeToggle />
 
-              backgroundColor: scrolled
-                ? 'color-mix(in srgb, var(--color-background-card) 92%, transparent)'
-                : 'color-mix(in srgb, var(--color-background) 72%, transparent)',
+            <a
+              href="https://github.com/VickyNarvare"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub profile"
+              className="hidden h-9 items-center gap-2 rounded-lg border border-border bg-background-card px-3 font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-font-muted transition-colors duration-200 hover:border-border-primary hover:text-font md:flex"
+            >
+              <FaGithub size={15} />
+              GitHub
+            </a>
 
-              borderColor: scrolled ? 'var(--color-border)' : 'transparent',
+            <Link
+              to="/contact"
+              className="group hidden h-9 items-center gap-1.5 rounded-lg bg-primary-dark px-3.5 font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-background transition-colors duration-200 hover:opacity-90 sm:flex"
+            >
+              Let&apos;s talk
+              <FiArrowUpRight
+                aria-hidden="true"
+                size={13}
+                className="transition-transform duration-200 group-hover:-translate-y-px group-hover:translate-x-px"
+              />
+            </Link>
 
-              boxShadow: scrolled
-                ? '0 12px 32px color-mix(in srgb, var(--color-font) 12%, transparent)'
-                : '0 0 0 rgba(0, 0, 0, 0)',
-            }}
-            transition={{
-              duration: 0.7,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="
-              relative
-              flex
-              items-center
-              justify-between
-              border
-              px-4
-              sm:px-6
-              backdrop-blur-xl
-            "
-          >
-            {/* =================================================
-                LEFT
-            ================================================= */}
-            <div className="flex items-center gap-6">
-              <Logo />
+            <button
+              ref={menuButtonRef}
+              onClick={() => setMobileOpen((previous) => !previous)}
+              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-font-muted transition-colors duration-200 hover:bg-background-secondary hover:text-font lg:hidden"
+            >
+              <AnimatePresence initial={false} mode="wait">
+                <motion.span
+                  key={mobileOpen ? 'close' : 'open'}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                  className="flex"
+                >
+                  {mobileOpen ? (
+                    <RxCross2 size={18} />
+                  ) : (
+                    <HiOutlineMenu size={18} />
+                  )}
+                </motion.span>
+              </AnimatePresence>
+            </button>
+          </div>
+        </div>
 
-              {/* Divider */}
-              <div className="hidden h-5 w-px bg-border lg:block" />
+        {/* Reading progress */}
+        <motion.span
+          aria-hidden="true"
+          style={{ scaleX: progress }}
+          className={`pointer-events-none absolute inset-x-0 bottom-0 h-px origin-left bg-primary transition-opacity duration-300 ${
+            scrolled ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
 
-              <NavLinks />
-            </div>
-
-            {/* =================================================
-                RIGHT
-            ================================================= */}
-            <div className="flex items-center gap-2">
-              {/* Theme */}
-              <ThemeToggle />
-              {/* Github */}
-              <a
-                href="https://github.com/VickyNarvare"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-
-                  hidden
-                  h-9
-                  items-center
-                  rounded-lg
-                  border
-                  border-border
-                  bg-background-card
-                  px-3
-                  text-sm
-                  font-medium
-                  text-font-muted
-                  transition-all
-                  duration-200
-                  dark:bg-background-card
-                  dark:text-font
-                  hover:border-border-primary
-                  hover:bg-background-secondary
-                  hover:text-font
-                  md:flex
-                  gap-1
-                "
-              >
-                <FaGithub size={17} />
-                GitHub
-              </a>
-
-              {/* Let's Talk */}
-              <Link
-                to="/contact"
-                className="
-                  hidden
-                  h-9
-                  items-center
-                  rounded-lg
-                  bg-primary
-                  px-4
-                  text-sm
-                  font-medium
-                  text-background-card
-                  shadow-sm
-                  transition-all
-                  duration-200
-                  hover:bg-primary-dark
-                  hover:shadow-md
-                  sm:flex
-                "
-              >
-                Let&apos;s Talk
-              </Link>
-
-              {/* Mobile */}
-              <button
-                onClick={() => setMobileOpen((previous) => !previous)}
-                aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-                aria-expanded={mobileOpen}
-                aria-controls="mobile-menu"
-                className="
-                  flex
-                  h-9
-                  w-9
-                  items-center
-                  justify-center
-                  rounded-lg
-                  border
-                  border-border
-                  text-font-muted
-                  transition-colors
-                  hover:bg-background-secondary
-                  hover:text-font
-                  lg:hidden
-                "
-              >
-                <HiOutlineMenu size={18} />
-              </button>
-            </div>
-          </motion.div>
-
-          {/* Mobile menu */}
-          <MobileMenu open={mobileOpen} onClose={closeMenu} />
-        </motion.div>
-      </header>
-    </>
+        <MobileMenu
+          open={mobileOpen}
+          onClose={closeMenu}
+          triggerRef={menuButtonRef}
+        />
+      </div>
+    </header>
   );
 };
 

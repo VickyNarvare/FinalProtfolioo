@@ -4,33 +4,35 @@
   --font-heading: 'Bricolage Grotesque', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  --color-font: #18151d;
-  --color-font-muted: #625a6b;
-  --color-font-light: #81778d;
+  /* Purple is the working accent; mint only marks availability. */
+  --color-font: #17131c;
+  --color-font-muted: #5c5365;
+  --color-font-light: #72687c;
   --color-background: #fbf9ff;
-  --color-background-secondary: #f2eaff;
-  --color-background-card: #f6ebff;
-  --color-border: #ded4eb;
-  --color-border-light: #eee7f6;
+  --color-background-secondary: #f2ecfa;
+  --color-background-card: #f7f2fd;
+  --color-border: #ddd3e8;
+  --color-border-primary: #a855f7;
+  --color-primary: #9333ea;
+  --color-primary-dark: #7e22ce;
+  --color-accent: #0a7d61;
+
+  --shadow-nav: 0 10px 30px color-mix(in srgb, var(--color-font) 10%, transparent);
+}
+
+/* dark: ink surfaces, purple signal, mint status */
+.dark {
+  --color-font: #f4effc;
+  --color-font-muted: #a9a0b8;
+  --color-font-light: #8b8199;
+  --color-background: #0c0a11;
+  --color-background-secondary: #16111e;
+  --color-background-card: #14101b;
+  --color-border: #322542;
   --color-border-primary: #a855f7;
   --color-primary: #a855f7;
-  --color-primary-light: #c084fc;
-  --color-primary-dark: #7e22ce;
-}
-/* dark: ink, plum surfaces and violet signal */
-.dark {
-  --color-font: #f5efff;
-  --color-font-muted: #aaa0b8;
-  --color-font-light: #887d98;
-  --color-background: #100d14;
-  --color-background-secondary: #1b1423;
-  --color-background-card: #18121f;
-  --color-border: #342542;
-  --color-border-light: #271b32;
-  --color-border-primary: #c084fc;
-  --color-primary: #c084fc;
-  --color-primary-light: #d8b4fe;
-  --color-primary-dark: #a855f7;
+  --color-primary-dark: #b975fb;
+  --color-accent: #75f4c8;
 }
 
 html {
@@ -50,26 +52,45 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
+}
+
 ::selection {
-  background: var(--color-primary);
+  background: var(--color-accent);
   color: var(--color-background);
 }
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
 }
+
+/* A faint paper grain keeps the flat surfaces from feeling synthetic. */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 60;
-  opacity: 0.07;
+  opacity: 0.06;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

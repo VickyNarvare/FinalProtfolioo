@@ -1,32 +1,36 @@
-import { useRef } from "react";
-import type { MouseEvent, ReactNode } from "react";
-import { Link } from "react-router";
-import { cn } from "../../lib/utils";
+import { Link } from 'react-router';
+import { cn } from '../../lib/utils';
+import type { ReactNode } from 'react';
 
-interface ButtonProps { href: string; variant?: "solid" | "outline"; magnetic?: boolean; children: ReactNode }
+interface ButtonProps {
+  href: string;
+  variant?: 'solid' | 'outline';
+  children: ReactNode;
+}
 
-export const Button = ({ href, variant = "outline", magnetic = false, children }: ButtonProps) => {
-  const ref = useRef<HTMLAnchorElement>(null);
+export const Button = ({ href, variant = 'outline', children }: ButtonProps) => {
   const external = /^(https?:|mailto:|tel:)/.test(href);
-
-  const move = (e: MouseEvent) => {
-    const el = ref.current;
-    if (!magnetic || !el || matchMedia("(pointer:coarse),(prefers-reduced-motion:reduce)").matches) return;
-    const b = el.getBoundingClientRect();
-    el.style.transform = `translate(${(e.clientX - b.left - b.width / 2) * 0.25}px,${(e.clientY - b.top - b.height / 2) * 0.25}px)`;
-  };
-  const props = {
-    onMouseMove: move,
-    onMouseLeave: () => { if (ref.current) ref.current.style.transform = ""; },
-    className: cn(
-      "inline-flex min-h-11 items-center rounded-full px-6 py-3 text-sm font-semibold transition-[background,color,transform] duration-300",
-      variant === "solid" ? "bg-primary text-background hover:bg-font" : "border border-font/30 text-font hover:bg-font hover:text-background",
-    ),
-  };
+  const className = cn(
+    'inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-5 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] transition-[background-color,border-color,color,box-shadow] duration-200',
+    variant === 'solid'
+      ? 'bg-primary text-background hover:bg-primary-dark'
+      : 'border border-border bg-background-card text-font hover:border-primary/50 hover:text-primary'
+  );
 
   return external ? (
-    <a ref={ref} href={href} {...(href.startsWith("http") && { target: "_blank", rel: "noreferrer" })} {...props}>{children}</a>
+    <a
+      href={href}
+      className={className}
+      {...(href.startsWith('http') && {
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      })}
+    >
+      {children}
+    </a>
   ) : (
-    <Link ref={ref} to={href} {...props}>{children}</Link>
+    <Link to={href} className={className}>
+      {children}
+    </Link>
   );
 };

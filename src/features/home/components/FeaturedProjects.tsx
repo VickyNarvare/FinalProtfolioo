@@ -1,22 +1,26 @@
 import { Link } from 'react-router';
 import { Container } from '../../../shared/components/Container';
 import { SectionHeading } from '../../../shared/components/SectionHeading';
+import { projects } from '../../projects/data/projects';
 import { ProjectGrid } from '../../projects/components/ProjectGrid';
 
 export const FeaturedProjects = () => (
-  <section id="projects" className="scroll-mt-24 py-24 md:py-32">
+  <section id="projects" className="scroll-mt-24 py-20 md:py-28">
     <Container>
-      <SectionHeading label="selected work" lines={['Selected work.']} />
+      <SectionHeading
+        label="Selected work"
+        lines={['Work that had a real problem to solve.']}
+      />
       <ProjectGrid limit={3} />
-      <div className="mt-12 flex justify-end">
+      <div className="mt-10 flex justify-end">
         <Link
           to="/projects"
-          className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-font-muted transition-colors hover:text-primary"
+          className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-font-muted transition-colors hover:text-primary"
         >
-          All projects
+          All {projects.length} projects
           <span
             aria-hidden="true"
-            className="transition-transform duration-300 group-hover:translate-x-1"
+            className="transition-transform duration-200 group-hover:translate-x-1"
           >
             →
           </span>

@@ -10,47 +10,55 @@ export const Accordion = ({
   numbered?: boolean;
 }) => {
   const [open, setOpen] = useState(0);
+
   return (
     <div className="border-t border-border">
-      {items.map((it, i) => {
-        const panelId = `accordion-panel-${i}`;
-        const buttonId = `accordion-button-${i}`;
+      {items.map((item, index) => {
+        const panelId = `accordion-panel-${index}`;
+        const buttonId = `accordion-button-${index}`;
+        const expanded = open === index;
 
         return (
-          <div key={it.title} className="border-b border-border">
+          <div key={item.title} className="border-b border-border">
             <button
               id={buttonId}
-              aria-expanded={open === i}
+              aria-expanded={expanded}
               aria-controls={panelId}
-              onClick={() => setOpen(open === i ? -1 : i)}
-              className="group flex w-full items-baseline gap-4 py-6 text-left"
+              onClick={() => setOpen(expanded ? -1 : index)}
+              className="group flex w-full items-baseline gap-4 py-5 text-left"
             >
               {numbered && (
-                <span className="font-mono text-xs text-font-light">
-                  {String(i + 1).padStart(2, '0')}
+                <span className="font-mono text-[10px] text-font-light">
+                  {String(index + 1).padStart(2, '0')}
                 </span>
               )}
-              <span className="flex-1 text-2xl font-semibold tracking-tight transition-transform duration-300 group-hover:translate-x-2 md:text-4xl">
-                {it.title}
+              <span className="flex-1 text-2xl font-extrabold tracking-tight transition-colors group-hover:text-primary md:text-3xl">
+                {item.title}
               </span>
-              <span className="font-mono text-primary" aria-hidden="true">
-                {open === i ? '−' : '+'}
+              <span
+                className="font-mono text-lg text-primary"
+                aria-hidden="true"
+              >
+                {expanded ? '−' : '+'}
               </span>
             </button>
             <div
               id={panelId}
               role="region"
               aria-labelledby={buttonId}
+              aria-hidden={!expanded}
               className={cn(
-                'grid transition-[grid-template-rows] duration-500',
-                open === i ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                'grid transition-[grid-template-rows] duration-300',
+                expanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
               )}
             >
               <div className="overflow-hidden">
                 <div className="max-w-xl space-y-3 pb-6 text-font-muted md:pl-10">
-                  <p>{it.desc}</p>
-                  {it.detail && (
-                    <p className="font-mono text-xs text-font">{it.detail}</p>
+                  <p>{item.desc}</p>
+                  {item.detail && (
+                    <p className="font-mono text-[11px] leading-relaxed text-font">
+                      {item.detail}
+                    </p>
                   )}
                 </div>
               </div>

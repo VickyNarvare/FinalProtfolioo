@@ -10,72 +10,72 @@ export const contact = {
 
 export const capabilities: Item[] = [
   {
-    title: 'Full Stack Development',
-    desc: 'MERN applications from frontend to backend, database and deployment.',
+    title: 'Full-Stack Product Development',
+    desc: 'Complete MERN applications, from the interface and API to the database and deployment.',
     detail:
-      'MongoDB, Express.js, React and Node.js working as one system, including e-commerce flows and admin dashboards.',
+      'MongoDB, Express.js, React and Node.js working as one system, including e-commerce flows, admin dashboards and secure authentication.',
   },
   {
-    title: 'Frontend Development',
-    desc: 'React / Next.js interfaces with responsive layouts, reusable components and modern interactions.',
+    title: 'Frontend Engineering',
+    desc: 'Fast, responsive React and Next.js interfaces built from reusable, accessible components.',
     detail:
-      'Context API or Redux for state, styled with Tailwind CSS, SCSS, Bootstrap or plain CSS3.',
+      'State handled with Context API or Redux, styled with Tailwind CSS, SCSS, Bootstrap or hand-written CSS3.',
   },
   {
     title: 'Backend & API Development',
-    desc: 'Node.js, Express.js, REST APIs, authentication and database integration.',
+    desc: 'Secure Node.js and Express.js REST APIs with authentication, validation and clean data handling.',
     detail:
-      'Clean REST endpoints, JWT-protected routes and database-backed features.',
+      'Well-structured endpoints, JWT-protected routes and database-backed business logic that is easy to extend.',
   },
   {
-    title: 'Interactive Experiences',
-    desc: 'GSAP, Framer Motion and smooth micro-interactions.',
+    title: 'Motion & Interactive Design',
+    desc: 'Purposeful GSAP and Framer Motion animation that guides attention instead of getting in the way.',
     detail:
-      'Scroll-driven and hover animation, as in ElectraX, kept purposeful and light.',
+      'Scroll-driven storytelling and hover micro-interactions, as in ElectraX, tuned for clarity and performance.',
   },
   {
-    title: 'Database & Authentication',
-    desc: 'MongoDB, MySQL, Mongoose, JWT and secure application flows.',
+    title: 'Databases & Authentication',
+    desc: 'Reliable data models and secure sign-in flows for applications that need to grow.',
     detail:
-      'Schema design with Mongoose, relational work in MySQL, token-based login flows.',
+      'Mongoose schema design, relational modelling in MySQL and token-based authentication built for real users.',
   },
   {
-    title: 'Responsive & Performance-Focused Development',
-    desc: 'Mobile-first layouts, optimization and production-ready implementation.',
+    title: 'Responsive, Performance-First Delivery',
+    desc: 'Mobile-first layouts, lean assets and production builds that stay fast on real devices.',
     detail:
-      'Layouts that start on mobile, then scale up, shipped through Vercel or Netlify.',
+      'Tested across screen sizes, optimised for Core Web Vitals, and shipped through Vercel or Netlify.',
   },
 ];
 
 export const services: Item[] = [
   {
     title: 'MERN Stack Development',
-    desc: 'Complete applications on MongoDB, Express.js, React and Node.js.',
+    desc: 'Complete web applications — frontend, backend, database and deployment — built as one maintainable product.',
     tech: ['MongoDB', 'Express.js', 'React', 'Node.js'],
   },
   {
     title: 'Frontend Development',
-    desc: 'Responsive React and Next.js interfaces built from reusable components.',
+    desc: 'Responsive React and Next.js interfaces with reusable components, clean state and accessible interactions.',
     tech: ['React', 'Next.js', 'Tailwind CSS'],
   },
   {
     title: 'Backend & API Development',
-    desc: 'REST APIs with authentication and database integration.',
+    desc: 'REST APIs with authentication, validation and database integration, built to support real traffic.',
     tech: ['Node.js', 'Express.js', 'JWT'],
   },
   {
     title: 'Website Development',
-    desc: 'Business, portfolio and shop websites, from scratch to deployment.',
+    desc: 'Business, portfolio and e-commerce websites designed, built and deployed from scratch.',
     tech: ['HTML5', 'CSS3', 'JavaScript'],
   },
   {
     title: 'Interactive Web Experiences',
-    desc: 'Animated, interactive pages that keep visitors engaged.',
+    desc: 'Scroll-driven storytelling and motion that make a product feel alive without slowing it down.',
     tech: ['GSAP', 'Framer Motion'],
   },
   {
     title: 'Website Maintenance & Improvements',
-    desc: 'Fixes, upgrades and improvements to existing projects.',
+    desc: 'Bug fixes, performance audits, new features and upgrades for existing codebases.',
     tech: ['Git', 'React', 'Node.js'],
   },
 ];
@@ -83,30 +83,42 @@ export const services: Item[] = [
 export const faq: Item[] = [
   {
     title: 'What kind of developer are you?',
-    desc: 'A full stack MERN developer from Indore with 1+ years of experience and a portfolio of live projects.',
+    desc: "I'm a full-stack MERN developer based in Indore with 1+ years of hands-on experience building and shipping live web applications.",
   },
   {
     title: 'What technologies do you work with?',
-    desc: 'React, Next.js, Node.js, Express.js, MongoDB, MySQL, Mongoose, Tailwind CSS, GSAP, Git, Vercel and Netlify.',
+    desc: 'React, Next.js, Node.js, Express.js, MongoDB, MySQL, Mongoose, Tailwind CSS, GSAP, Git, Vercel and Netlify — chosen to fit the project, not the trend.',
   },
   {
     title: 'What services do you offer?',
-    desc: 'MERN development, frontend, backend and API work, website development, interactive experiences, and maintenance.',
+    desc: 'MERN development, frontend engineering, backend and API work, business websites, interactive experiences and ongoing maintenance.',
   },
   {
     title: 'Can you build a website from scratch?',
-    desc: 'Yes. I handle the interface, backend, database and deployment.',
+    desc: 'Yes. I handle the full process: planning, interface design, backend, database, testing and deployment.',
   },
   {
     title: 'Can you work on an existing project?',
-    desc: 'Yes. I can fix, extend or improve an existing codebase.',
+    desc: 'Yes. I can audit, fix, refactor or extend an existing codebase and work within your current stack and conventions.',
   },
   {
     title: 'How can I hire you?',
-    desc: 'Email or WhatsApp me with a short description of the project. I take freelance projects and full-time roles.',
+    desc: "Email or WhatsApp me with a short brief. I take on freelance projects and full-time roles, and I'll reply with clear next steps.",
   },
   {
     title: 'How long does a project take?',
-    desc: 'It depends on scope. Send me the requirements and I will reply with an estimate.',
+    desc: "Timelines depend on scope. A landing page may take days; a full-stack application takes weeks. Share your requirements and I'll send a clear estimate.",
+  },
+  {
+    title: 'Do you work with clients remotely?',
+    desc: 'Yes. I work remotely with clients across time zones and keep communication clear through email, WhatsApp or scheduled calls.',
+  },
+  {
+    title: 'How much does a project cost?',
+    desc: "Every quote is based on scope, complexity and timeline. Tell me what you need and I'll send a transparent, itemised estimate.",
+  },
+  {
+    title: 'What happens after launch?',
+    desc: 'I offer post-launch support for fixes, updates and improvements, so your site keeps working as your needs change.',
   },
 ];

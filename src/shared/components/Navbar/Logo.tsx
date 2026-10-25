@@ -6,13 +6,13 @@ const Logo = () => {
       className="group flex cursor-pointer items-center gap-3"
       aria-label="Vicky Narvare - Home"
     >
-      <div className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-background-card shadow-sm transition-all duration-300 group-hover:border-primary group-hover:bg-background-secondary dark:bg-background-card">
+      <div className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-background-card shadow-sm transition-all duration-300 group-hover:border-primary group-hover:bg-background-secondary">
         <span className="text-sm font-black tracking-[-0.12em] text-font">
-          V<span className="text-primary">N</span>
+          V<span className="text-primary-dark">N</span>
         </span>
         <span
           aria-hidden="true"
-          className="absolute bottom-1.5 right-1.5 size-1 rounded-full bg-primary transition-transform duration-300 group-hover:scale-150"
+          className="absolute bottom-1.5 right-1.5 size-1 rounded-full bg-accent transition-transform duration-300 group-hover:scale-150"
         />
       </div>
 
@@ -22,7 +22,7 @@ const Logo = () => {
         </p>
 
         <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.16em] text-font-light">
-          Developer
+          MERN Developer
         </p>
       </div>
     </Link>

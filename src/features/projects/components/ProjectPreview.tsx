@@ -4,30 +4,33 @@ import type { Project } from '../../../types/project';
 export const ProjectPreview = ({
   project: p,
   className,
+  priority = false,
 }: {
   project: Project;
   className?: string;
+  priority?: boolean;
 }) =>
   p.image ? (
     <img
       src={p.image}
       alt={p.imageAlt ?? `${p.name} preview`}
-      loading="lazy"
+      loading={priority ? 'eager' : 'lazy'}
+      fetchPriority={priority ? 'high' : 'auto'}
       decoding="async"
-      className={cn('aspect-16/10 w-full object-cover', className)}
+      draggable={false}
+      className={cn('aspect-[1.95/1] w-full object-cover', className)}
     />
   ) : (
     <div
       className={cn(
-        'relative flex aspect-16/10 w-full items-end p-6 md:p-10',
+        'relative flex aspect-[1.95/1] w-full items-end bg-background-secondary p-6 md:p-10',
         className
       )}
-      style={{ background: p.tone }}
     >
-      <span className="text-[10vw] font-extrabold leading-none tracking-tighter text-[#ede9e0] md:text-[5vw]">
+      <span className="text-[10vw] font-extrabold leading-none tracking-tighter text-font md:text-[5vw]">
         {p.name}
       </span>
-      <span className="absolute right-5 top-4 font-mono text-xs text-[#9a9487]">
+      <span className="absolute right-5 top-4 font-mono text-xs text-font-light">
         preview.png
       </span>
     </div>

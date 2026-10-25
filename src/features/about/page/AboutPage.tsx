@@ -1,10 +1,15 @@
-import { AboutPreview } from '../../home/components/AboutPreview';
 import { Services } from '../../home/components/Services';
+import { AboutCta } from '../components/AboutCta';
+import { AboutHero } from '../components/AboutHero';
+import { Principles } from '../components/Principles';
+import { Timeline } from '../components/Timeline';
 
 export const AboutPage = () => (
-  <div className="pt-20">
-    <h1 className="sr-only">About Vicky Narvare</h1>
-    <AboutPreview />
+  <>
+    <AboutHero />
+    <Principles />
+    <Timeline />
     <Services />
-  </div>
+    <AboutCta />
+  </>
 );
